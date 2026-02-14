@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: Copyright © 2022-2024 Idiap Research Institute <contact@idiap.ch>
+#
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+#  Disabled stage reveal-md slide because <https://github.com/webpro/reveal-md/issues/239>
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:
+  - build
+  - deploy
+
+
+default:
+  tags:
+    - docker
+    - linux
+
+site:
+  stage: build
+  image:
+    name: python:3.12-slim
+  script:
+    - pip install mkslides
+    - mkslides build docs
+  artifacts:
+    paths:
+      - site/*
+
+deploy private:
+  stage: deploy
+  image:
+    name: alpine:latest
+  script:
+    - mkdir private
+    - cp -a site/* private/
+  artifacts:
+    paths:
+      - private
+
+deploy:
+  stage: deploy
+  image:
+    name: alpine:latest
+  script:
+    - mkdir public
+    - cp -a site/* public/
+  pages: true
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
