@@ -1,0 +1,26 @@
+/* always show the logo in the top right */
+.reveal::before {
+  content: "";
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 150px;
+  height: 75px;
+  background: url("https://www.idiap.ch/en/about/files/idiap-logo-e-bleu-noir-pantone.png") no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* AI Days 2026 text in top left */
+.reveal::after {
+  content: "AI Days 2026";
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #e30613;
+  pointer-events: none;
+  z-index: 9999;
+}

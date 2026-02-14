@@ -1,0 +1,3 @@
+plugins:
+  - extra_css:
+      - custom.css

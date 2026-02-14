@@ -5,6 +5,13 @@ slides:
 revealjs:
     height: 1080
     width: 1920
+plugins:
+    - extra_css:
+        - custom.css
 ---
 
-TODO: presentation
+TODO: presentation slide 1
+
+---
+
+TODO: slide 2
