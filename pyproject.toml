@@ -13,7 +13,9 @@ authors = [
 ]
 
 dependencies = [
+    "loguru>=0.7.3",
     "pydantic-ai>=1.59.0",
+    "python-dotenv>=1.2.1",
 ]
 
 [project.optional-dependencies]
