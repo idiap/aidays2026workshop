@@ -1,0 +1,26 @@
+[build-system]
+requires = ["uv_build>=0.9.25,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "workshop"
+version = "0.0.1"
+description = "AI Days 2026 Workshop - First step with Agents"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "William Droz", email = "william.droz@idiap.ch" },
+]
+
+dependencies = [
+    "pydantic-ai>=1.59.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.2",
+]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
