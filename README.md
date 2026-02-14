@@ -4,8 +4,9 @@ The slides are available [here](https://wdroz.pages.idiap.ch/aidays2026workshop)
 
 TODO: learning objectives
 
-## Setup which LLMs provider you want to use?
+TODO: Install uv
 
+## Setup which LLMs provider you want to use?
 
 ```bash
 # Optional if you use openai
