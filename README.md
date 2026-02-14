@@ -1,5 +1,7 @@
 # AIDays2026Workshop
 
+The slides are available [here](https://wdroz.pages.idiap.ch/aidays2026workshop)
+
 TODO: learning objectives
 
 ## Workshop steps
