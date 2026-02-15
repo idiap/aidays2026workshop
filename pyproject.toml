@@ -13,6 +13,7 @@ authors = [
 ]
 
 dependencies = [
+    "grimoireplot",
     "loguru>=0.7.3",
     "pandas>=3.0.0",
     "polars>=1.38.1",
@@ -32,3 +33,6 @@ docs = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.uv.sources]
+grimoireplot = { git = "ssh://git@gitlab.idiap.ch/wdroz/grimoireplot" }
