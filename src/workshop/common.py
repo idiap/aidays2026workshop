@@ -82,7 +82,7 @@ def pydantic_ai_build_model(
         return pydantic_ai_build_model_openai_chat(provider)
 
 
-def smolagents_build_model():
+def smolagents_build_model() -> OpenAIModel:
     if (base_url := os.getenv("LLM_BASE_URL")) is None:
         logger.warning(
             "LLM_BASE_URL environment variable is not set, defaulting to https://api.openai.com/v1"
