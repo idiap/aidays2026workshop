@@ -95,6 +95,11 @@ def smolagents_build_model():
         logger.warning(
             f"LLM_MODEL_NAME environment variable is not set, defaulting to {model_name}"
         )
+    use_open_responses = os.getenv("LLM_USE_OPENRESPONSES", "false").lower() == "true"
+    if use_open_responses:
+        logger.warning(
+            "LLM_USE_OPENRESPONSES is set to true, but smolagents does not support OpenAIResponsesModel, defaulting to a regular OpenAIModel"
+        )
     model = OpenAIModel(
         model_id=model_name,
         api_base=base_url,
