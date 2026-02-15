@@ -15,6 +15,10 @@ LLM_MODEL_NAME=
 
 # Required
 LLM_API_KEY=
+
+# Misc
+# true (default) if you want to use the newer standard when both are possible
+LLM_USE_OPENRESPONSES=true
 ```
 
 TODO: add .env.x.example for each provider with the base_url
