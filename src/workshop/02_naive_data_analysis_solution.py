@@ -1,5 +1,5 @@
 """
-How to make your first agent with pydantic - solution
+Naive data analysis - solution
 """
 
 from pathlib import Path
@@ -23,6 +23,6 @@ data = dataset_path.read_text()
 print("Data loaded, asking the agent to analyze it... length:", len(data))
 intruction = f"""You are a data analyst, you have the following dataset:
 {data}
-Please analyze it and give me insights about when the user asks for it. Be concise and precise, do not give me the whole dataset back, just insights."""
+Please analyze it and give me insights about when the user asks for it. Be concise and precise, do not give me the whole dataset back, just what the user asks for."""
 app = agent.to_web(instructions=intruction)
 # run with uv run uvicorn workshop.02_naive_data_analysis_solution:app

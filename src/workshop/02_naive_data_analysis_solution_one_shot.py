@@ -1,5 +1,5 @@
 """
-How to make your first agent with pydantic - solution
+Naive one-shot data analysis - solution
 """
 
 from pathlib import Path
