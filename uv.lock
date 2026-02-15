@@ -3276,7 +3276,7 @@ docs = [
 requires-dist = [
     { name = "loguru", specifier = ">=0.7.3" },
     { name = "mkslides", marker = "extra == 'docs'", specifier = ">=2.0.0" },
-    { name = "pydantic-ai", specifier = ">=1.59.0" },
+    { name = "pydantic-ai", extras = ["web"], specifier = ">=1.59.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.0.2" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
 ]
