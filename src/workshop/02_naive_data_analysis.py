@@ -25,5 +25,6 @@ if __name__ == "__main__":
     #  - give it to the agent with a prompt
     #  - tips: you can `instructions` (system prompt) with agent.run_sync
 
+    #  Try asking for the average number of voters
     #  result = ...
     #  print(result.output)
