@@ -10,12 +10,14 @@ import pytest
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIChatModel, OpenAIResponsesModel
 from pydantic_ai.providers.openai import OpenAIProvider
+from smolagents import CodeAgent, OpenAIModel
 
 from workshop.common import (
     pydantic_ai_build_provider_openai,
     pydantic_ai_build_model_openai_chat,
     pydantic_ai_build_model_openai_responses,
     pydantic_ai_build_model,
+    smolagents_build_model,
 )
 
 
@@ -81,3 +83,33 @@ def test_agent_responds():
     assert result.output is not None
     assert isinstance(result.output, str)
     assert len(result.output) > 0
+
+
+# ---------------------------------------------------------------------------
+# smolagents – model builder
+# ---------------------------------------------------------------------------
+
+
+def test_smolagents_build_model_returns_openai_model():
+    model = smolagents_build_model()
+    assert isinstance(model, OpenAIModel)
+
+
+def test_smolagents_build_model_raises_without_api_key(monkeypatch):
+    monkeypatch.delenv("LLM_API_KEY", raising=False)
+    with pytest.raises(ValueError, match="LLM_API_KEY"):
+        smolagents_build_model()
+
+
+# ---------------------------------------------------------------------------
+# smolagents – agent integration
+# ---------------------------------------------------------------------------
+
+
+def test_smolagents_code_agent_responds():
+    """Build a CodeAgent with the user's environment and verify it produces a non-empty response."""
+    model = smolagents_build_model()
+    agent = CodeAgent(model=model, tools=[])
+    result = agent.run("What is 2 + 2?")
+    assert result is not None
+    assert str(result).strip() != ""
