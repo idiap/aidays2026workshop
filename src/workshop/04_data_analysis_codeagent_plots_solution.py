@@ -22,6 +22,7 @@ def build_agent():
             "grimoireplot.client",
             "math",
             "stat",
+            "numpy",
         ],
     )
     return agent
