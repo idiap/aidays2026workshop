@@ -16,7 +16,13 @@ def build_agent():
     agent = CodeAgent(
         model=model,
         tools=[],
-        additional_authorized_imports=["pandas", "plotly.*", "grimoireplot.client"],
+        additional_authorized_imports=[
+            "pandas",
+            "plotly.*",
+            "grimoireplot.client",
+            "math",
+            "stat",
+        ],
     )
     return agent
 
