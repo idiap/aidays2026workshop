@@ -20,7 +20,7 @@ PRODUCT_PAGES = {
     },
     "CPU": {
         "url": "https://www.digitec.ch/fr/s1/producttype/processeur-83",
-        "filters": ["Socket", "Famille de processeur", "Nombre de cœurs de processeur"],
+        "filters": ["Socket", "Famille de processeur"],
     },
     "RAM": {
         "url": "https://www.digitec.ch/fr/s1/producttype/memoire-vive-2",
