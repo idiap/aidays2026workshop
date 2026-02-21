@@ -12,7 +12,19 @@ CATEGORIES_FILE = Path(__file__).parent / "categories.json"
 PRODUCT_PAGES = {
     "Motherboard": {
         "url": "https://www.digitec.ch/fr/s1/producttype/carte-mere-65",
-        "filters": ["Chipset", "Socket"],
+        "filters": ["Chipset", "Socket", "Type de mémoire vive"],
+    },
+    "GPU": {
+        "url": "https://www.digitec.ch/fr/s1/producttype/carte-graphique-106",
+        "filters": ["Modèle de carte graphique"],
+    },
+    "CPU": {
+        "url": "https://www.digitec.ch/fr/s1/producttype/processeur-83",
+        "filters": ["Socket", "Famille de processeur", "Nombre de cœurs de processeur"],
+    },
+    "RAM": {
+        "url": "https://www.digitec.ch/fr/s1/producttype/memoire-vive-2",
+        "filters": ["Configuration de la mémoire", "Type de mémoire vive"],
     },
     # Add more product types here, e.g.:
     # "Graphics Card": {
