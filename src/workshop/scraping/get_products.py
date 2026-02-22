@@ -30,7 +30,7 @@ CATEGORIES_FILE = Path(__file__).parent / "categories.json"
 BASE_URL = "https://www.digitec.ch"
 
 
-def load_categories(path: Path) -> dict:
+def load_categories(path: Path = CATEGORIES_FILE) -> dict:
     """Load categories from JSON file."""
     if not path.exists():
         raise FileNotFoundError(
