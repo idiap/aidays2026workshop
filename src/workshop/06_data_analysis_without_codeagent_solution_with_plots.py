@@ -150,7 +150,7 @@ def query_dataframe(query: DataQuery):
     return result.reset_index(drop=True).to_dict(orient="records")
 
 
-@agent.tool_plain(sequential=True)
+@agent.tool_plain()
 def create_and_push_plot(request: PlotRequest):
     """Create a plotly express chart from the dataset and push it to the grimoire server for visualization.
 
