@@ -13,6 +13,7 @@ authors = [
 ]
 
 dependencies = [
+    "fastmcp>=2.14.5",
     "grimoireplot",
     "loguru>=0.7.3",
     "pandas>=3.0.0",
