@@ -126,11 +126,18 @@ def query_dataframe(query: DataQuery):
 
     # Grouping + aggregation, or aggregation alone
     if query.group_by and query.aggregation:
-        result = getattr(result.groupby(query.group_by), query.aggregation)(
-            numeric_only=True
-        ).reset_index()
+        grouped = result.groupby(query.group_by)
+        if query.aggregation == "count":
+            result = grouped.count().reset_index()
+        else:
+            result = getattr(grouped, query.aggregation)(
+                numeric_only=True
+            ).reset_index()
     elif query.aggregation:
-        result = result.agg(query.aggregation, numeric_only=True).to_frame().T
+        if query.aggregation == "count":
+            result = result.count().to_frame().T
+        else:
+            result = result.agg(query.aggregation, numeric_only=True).to_frame().T
 
     # Sorting
     if query.sort_by:
@@ -143,7 +150,7 @@ def query_dataframe(query: DataQuery):
     return result.reset_index(drop=True).to_dict(orient="records")
 
 
-@agent.tool_plain
+@agent.tool_plain(sequential=True)
 def create_and_push_plot(request: PlotRequest):
     """Create a plotly express chart from the dataset and push it to the grimoire server for visualization.
 
@@ -151,14 +158,27 @@ def create_and_push_plot(request: PlotRequest):
     optionally applying a DataQuery to filter/aggregate the data first.
     The resulting plot is pushed to the grimoire server via push_plot_sync.
 
+    IMPORTANT: The `x`, `y`, and `color` fields MUST be actual column names that exist
+    in the resulting DataFrame AFTER the data_query is applied. Do NOT invent column names.
+    The raw dataset columns are: no, date_of_voting, title_it, title_fr, title_de, kind,
+    recommendation, total_voters, domestic_voters, overseas_voters, ballots_returned,
+    participation, invalid_voting_ballots, blank_voting_ballots, valid_voting_ballots,
+    total_yes, ratio_yes, total_no, ratio_no, cantons_voting_yes, cantons_voting_no, outcome.
+
+    After a 'count' aggregation with group_by, the count values are stored in the
+    non-grouped columns (they keep their original names). For example, grouping by
+    ['kind'] with aggregation='count' and select=['kind', 'no'] produces columns
+    ['kind', 'no'] where 'no' contains the counts. There is NO column named 'count'.
+    Use query_dataframe first if unsure about the resulting column names.
+
     Parameters
     ----------
     request : PlotRequest
         Structured plot request containing:
         - chart_type: Type of plotly express chart ('bar', 'line', 'scatter', 'pie', 'histogram', 'box', 'violin', 'area').
-        - x: Optional column name for the x-axis.
-        - y: Optional column name for the y-axis.
-        - color: Optional column name for color grouping.
+        - x: Optional column name for the x-axis. MUST be an actual column in the data.
+        - y: Optional column name for the y-axis. MUST be an actual column in the data.
+        - color: Optional column name for color grouping. MUST be an actual column in the data.
         - title: Title of the plot.
         - labels: Optional dict mapping column names to display labels.
         - data_query: Optional DataQuery to filter/aggregate the data before plotting.
@@ -177,6 +197,20 @@ def create_and_push_plot(request: PlotRequest):
         plot_df = pd.DataFrame(records)
     else:
         plot_df = df.copy()
+
+    # Validate that x, y, color columns exist in the DataFrame
+    available_cols = list(plot_df.columns)
+    for field_name, field_value in [
+        ("x", request.x),
+        ("y", request.y),
+        ("color", request.color),
+    ]:
+        if field_value and field_value not in available_cols:
+            return {
+                "error": f"Column '{field_value}' (used as {field_name}) does not exist in the data. "
+                f"Available columns are: {available_cols}. "
+                f"Use query_dataframe first to inspect the data, or pick a valid column name."
+            }
 
     # Build kwargs for plotly express
     kwargs = {"data_frame": plot_df, "title": request.title}
