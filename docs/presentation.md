@@ -106,8 +106,102 @@ uv sync
 
 ---
 
-# Your first agent
+# Exercise 01 - Your first agent
 
-File `src/workshop/01_first_agent.py`
+**How to make your first agent with pydantic-ai**
 
-TODO link
+- Implement the `build_agent()` function
+- Use environment variables for configuration (`LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL_NAME`)
+- Run the agent and ask it a question
+
+File: `src/workshop/01_first_agent.py`
+
+```bash
+uv run python -m workshop.01_first_agent
+```
+
+---
+
+# Exercise 02 - Naive data analysis
+
+**Give raw CSV data directly to the LLM**
+
+- Read the `dataset/voting.csv` file
+- Pass its content to the agent along with a prompt
+- Try asking for the average number of voters
+- Tip: you can use `instructions` (system prompt) with `agent.run_sync`
+
+File: `src/workshop/02_naive_data_analysis.py`
+
+```bash
+uv run python -m workshop.02_naive_data_analysis
+```
+
+---
+
+# Exercise 03 - Data analysis with CodeAgent
+
+**Let the agent write and execute code to analyze data**
+
+- Use `smolagents` `CodeAgent` to analyze the dataset
+- The agent can write Python code using pandas or polars
+- Build a prompt that provides the dataset path and the user question
+
+File: `src/workshop/03_data_analysis_codeagent.py`
+
+```bash
+uv run python -m workshop.03_data_analysis_codeagent
+```
+
+---
+
+# Exercise 04 - CodeAgent with plots
+
+**Generate plots using plotly and grimoireplot**
+
+- The agent creates plots with plotly and pushes them via `push_plot_sync`
+- How do you explain to the model how to use `push_plot_sync`?
+- Run `uv run grimoireplot serve` first, then browse to `http://localhost:8080`
+
+File: `src/workshop/04_data_analysis_codeagent_plots.py`
+
+```bash
+uv run grimoireplot serve  # in a separate terminal
+uv run python -m workshop.04_data_analysis_codeagent_plots
+```
+
+---
+
+# Exercise 05 - CodeAgent with tools
+
+**Expose `push_plot_sync` as a proper smolagents tool**
+
+- Use the `@tool` decorator from smolagents to wrap `push_plot_sync`
+- Add the tool to the `CodeAgent`
+- Docs: https://huggingface.co/docs/smolagents/en/guided_tour#tools
+
+File: `src/workshop/05_data_analysis_codeagent_plot_with_tools.py`
+
+```bash
+uv run grimoireplot serve  # in a separate terminal
+uv run python -m workshop.05_data_analysis_codeagent_plot_with_tools
+```
+
+---
+
+# Exercise 06 - Data analysis without CodeAgent
+
+**Structured queries instead of arbitrary code execution**
+
+- Define a `DataQuery` schema with pydantic (filters, group_by, aggregation, ...)
+- Implement the `query_dataframe` tool to safely query a pandas DataFrame
+- The agent translates natural language into structured queries
+- Expose as a web app with `agent.to_web()`
+
+File: `src/workshop/06_data_analysis_without_codeagent.py`
+
+```bash
+uv run uvicorn workshop.06_data_analysis_without_codeagent:app
+```
+
+---
