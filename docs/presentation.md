@@ -106,6 +106,27 @@ uv sync
 
 ---
 
+# What is an Agent?
+
+An **agent** is a program that uses an LLM as its reasoning engine to **decide** what actions to take.
+
+- **Takes a goal** — a user prompt or task description
+- **Reasons** — the LLM interprets the goal and plans steps
+- **Acts** — it can call tools, run code, or fetch data
+- **Iterates** — it loops until the goal is satisfied
+
+### Agent vs. simple LLM call
+
+| Simple LLM call | Agent |
+|---|---|
+| One prompt → one response | Multi-step reasoning loop |
+| No side effects | Can call tools & APIs |
+| Stateless | Maintains context across steps |
+
+> Think of an agent as an LLM **in a loop**, equipped with **tools** and **autonomy**.
+
+---
+
 # Exercise 01 - Your first agent
 
 **How to make your first agent with pydantic-ai**
