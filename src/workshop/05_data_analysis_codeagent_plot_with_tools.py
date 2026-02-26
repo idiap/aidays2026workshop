@@ -1,5 +1,5 @@
 """
-How to make your first agent with pydantic - solution
+Data analysis with CodeAgent plots with tools
 """
 
 from pathlib import Path

@@ -1,5 +1,5 @@
 """
-Naive data analysis - solution
+Data analysis without CodeAgent
 """
 
 from pathlib import Path
