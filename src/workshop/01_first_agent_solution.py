@@ -36,6 +36,6 @@ def build_agent() -> Agent:
 
 if __name__ == "__main__":
     agent = build_agent()
-    toto = input("Ask the agent: ")
-    result = agent.run_sync(toto)
+    user_input = input("Ask the agent: ")
+    result = agent.run_sync(user_input)
     print(result.output)
