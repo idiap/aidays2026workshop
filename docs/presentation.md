@@ -96,6 +96,16 @@ dependencies = [
 
 ---
 
+# Install the workshop "project"
+
+```bash
+uv sync
+```
+
+*Optionnaly, add `.venv/bin/python` as the python interpreter in your IDE*
+
+---
+
 # Your first agent
 
 File `src/workshop/01_first_agent.py`
