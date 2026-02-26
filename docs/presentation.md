@@ -95,3 +95,9 @@ dependencies = [
 ```
 
 ---
+
+# Your first agent
+
+File `src/workshop/01_first_agent.py`
+
+TODO link
