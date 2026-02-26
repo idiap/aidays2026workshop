@@ -10,8 +10,24 @@ plugins:
         - custom.css
 ---
 
-TODO: presentation slide 1
+# Workshop
+
+## Getting Started with AI Agents in Python
 
 ---
 
-TODO: slide 2
+# Planning
+
+  - Setup a modern python environment
+    - Setup using uv
+    - Standalone scripts
+    - Your first agent using pydantic-ai
+  - Workshop data analysis
+    - Naive approach to data analysis
+    - Coding agent to the rescue!
+    - Safer approach with tools
+  - Workshop Tools (MCPs)
+    - From framework-specifc tools to MCPs
+    - Converting data analysis tools to MCPs
+    - MCPs to help us searching relevant PC components
+    - Comparing with browser-use and ChatGPT
