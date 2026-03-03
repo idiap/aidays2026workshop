@@ -227,6 +227,28 @@ uv run uvicorn workshop.06_data_analysis_without_codeagent:app
 
 ---
 
+# MCPs — Model Context Protocol
+
+A **standard protocol** for AI agents to discover and call external tools, data sources, and services.
+
+### The problem
+
+Without MCP, every agent framework needs **custom glue code** for every tool → M×N integrations.
+
+MCP reduces this to **M + N** — one protocol both sides implement.
+
+### How it works
+
+| Component | Role |
+|---|---|
+| **MCP Server** | Exposes **tools** (functions), **resources** (data), **prompts** (templates) |
+| **MCP Client** | Embedded in the agent — discovers and invokes capabilities at runtime |
+| **Transport** | **stdio** (local) or **Streamable HTTP** (remote) |
+
+> Think of MCP as **USB-C for AI integrations** — plug any tool into any agent.
+
+---
+
 # Exercise 07 - Data analysis with MCP
 
 **From framework-specific tools to the Model Context Protocol**
@@ -242,5 +264,28 @@ File: `src/workshop/07_data_analysis_mcp.py`
 uv run grimoireplot serve  # in a separate terminal
 uv run uvicorn workshop.07_data_analysis_mcp:app
 ```
+
+---
+
+# SubAgents
+
+**Subagents** are child agents spawned by an orchestrator to handle specific subtasks.
+
+The parent **plans and delegates**; each subagent runs independently, then returns results.
+
+### Common patterns
+
+| Pattern | Description |
+|---|---|
+| **Delegation** | Orchestrator assigns one subtask per subagent (e.g. one CSV each) |
+| **Specialization** | Each subagent can use different tools or prompts |
+| **Parallel execution** | Independent subtasks run concurrently |
+
+### Why subagents?
+
+- **Modularity** — focused prompt & toolset per subagent
+- **Parallelism** — simultaneous execution, lower wall-clock time
+- **Separation of concerns** — orchestrator plans, subagents execute
+- **Scalability** — add a subagent, don't rewrite the orchestrator
 
 ---
