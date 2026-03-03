@@ -151,25 +151,38 @@ def get_csv_info(filename: str) -> dict:
 
 @mcp.tool
 def query_csv(query: DataQuery) -> list[dict]:
-    """Execute a structured and safe query against a CSV file.
+    """Execute a structured and safe query against a CSV file loaded as a pandas DataFrame.
+
+    This function applies filtering, grouping, aggregation, column selection,
+    sorting, and row limiting based on a validated `DataQuery` schema.
+    Only predefined operations are supported to prevent arbitrary code execution.
 
     Parameters
     ----------
     query : DataQuery
         Structured query object containing:
         - filename: Name of the CSV file to query.
-        - select: Optional list of columns to return.
-        - filters: Optional list of FilterCondition (column, operator, value).
-        - group_by: Optional list of columns to group by.
-        - aggregation: Aggregation function ('mean', 'sum', 'count', 'max', 'min').
-        - sort_by: Optional column to sort results by.
-        - ascending: Sort direction (default True).
-        - limit: Maximum number of rows to return (default 10).
+        - select: Optional[List[str]]
+            Columns to return.
+        - filters: Optional[List[FilterCondition]]
+            List of filter conditions with column, operator, and value.
+        - group_by: Optional[List[str]]
+            Columns to group by.
+        - aggregation: Optional[str]
+            Aggregation function to apply ('mean', 'sum', 'count', 'max', 'min').
+            Requires `group_by` to be set.
+        - sort_by: Optional[str]
+            Column to sort results by.
+        - ascending: bool
+            Sort direction (default True).
+        - limit: Optional[int]
+            Maximum number of rows to return (default 10).
 
     Returns
     -------
-    list[dict]
-        Query results as a list of row dictionaries.
+    List[dict]
+        Query results as a list of row dictionaries
+        (DataFrame converted using orient="records").
     """
     df = _load_df(query.filename)
     result = df.copy()
@@ -195,13 +208,20 @@ def query_csv(query: DataQuery) -> list[dict]:
     if query.select:
         result = result[query.select]
 
-    # Grouping + aggregation
+    # Grouping + aggregation, or aggregation alone
     if query.group_by and query.aggregation:
-        result = getattr(result.groupby(query.group_by), query.aggregation)(
-            numeric_only=True
-        ).reset_index()
+        grouped = result.groupby(query.group_by)
+        if query.aggregation == "count":
+            result = grouped.count().reset_index()
+        else:
+            result = getattr(grouped, query.aggregation)(
+                numeric_only=True
+            ).reset_index()
     elif query.aggregation:
-        result = result.agg(query.aggregation, numeric_only=True).to_frame().T
+        if query.aggregation == "count":
+            result = result.count().to_frame().T
+        else:
+            result = result.agg(query.aggregation, numeric_only=True).to_frame().T
 
     # Sorting
     if query.sort_by:
@@ -233,26 +253,30 @@ class PlotRequest(BaseModel):
 
 @mcp.tool
 def create_and_push_plot(request: PlotRequest) -> dict:
-    """Create a plotly express chart from a CSV dataset and push it to the grimoire server.
+    """Create a plotly express chart from a CSV dataset and push it to the grimoire server for visualization.
 
-    Use query_csv or get_csv_info first to understand the data before plotting.
+    This tool builds a plotly figure using plotly express based on structured parameters,
+    optionally applying a DataQuery to filter/aggregate the data first.
+    The resulting plot is pushed to the grimoire server via push_plot_sync.
 
-    The `x`, `y`, and `color` fields MUST be actual column names that exist
-    in the resulting DataFrame AFTER the optional data_query is applied.
+    IMPORTANT: The `x`, `y`, and `color` fields MUST be actual column names that exist
+    in the resulting DataFrame AFTER the data_query is applied. Do NOT invent column names.
+    Use get_csv_info to discover available columns, or query_csv to inspect the data.
 
     After a 'count' aggregation with group_by, the count values are stored in the
     non-grouped columns (they keep their original names). For example, grouping by
     ['kind'] with aggregation='count' and select=['kind', 'no'] produces columns
     ['kind', 'no'] where 'no' contains the counts. There is NO column named 'count'.
+    Use query_csv first if unsure about the resulting column names.
 
     Parameters
     ----------
     request : PlotRequest
         Structured plot request containing:
-        - chart_type: Type of plotly express chart.
-        - x: Optional column name for the x-axis.
-        - y: Optional column name for the y-axis.
-        - color: Optional column name for color grouping.
+        - chart_type: Type of plotly express chart ('bar', 'line', 'scatter', 'pie', 'histogram', 'box', 'violin', 'area').
+        - x: Optional column name for the x-axis. MUST be an actual column in the data.
+        - y: Optional column name for the y-axis. MUST be an actual column in the data.
+        - color: Optional column name for color grouping. MUST be an actual column in the data.
         - title: Title of the plot.
         - labels: Optional dict mapping column names to display labels.
         - data_query: Optional DataQuery to filter/aggregate the data before plotting.
@@ -263,8 +287,9 @@ def create_and_push_plot(request: PlotRequest) -> dict:
     Returns
     -------
     dict
-        Response from the grimoire server, or an error dict if a column is invalid.
+        Response from the grimoire server confirming the plot was pushed.
     """
+    # Prepare the data: apply DataQuery if provided
     if request.data_query:
         records = query_csv(request.data_query)
         plot_df = pd.DataFrame(records)
