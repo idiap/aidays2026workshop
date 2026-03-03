@@ -226,3 +226,21 @@ uv run uvicorn workshop.06_data_analysis_without_codeagent:app
 ```
 
 ---
+
+# Exercise 07 - Data analysis with MCP
+
+**From framework-specific tools to the Model Context Protocol**
+
+- The tools from exercise 06 are already implemented as plain functions
+- Decorate each one with `@mcp.tool` to expose them via FastMCP
+- The agent discovers and calls the tools at runtime over MCP (stdio transport)
+- Functions to expose: `list_csv_files`, `get_csv_info`, `query_csv`, `create_and_push_plot`
+
+File: `src/workshop/07_data_analysis_mcp.py`
+
+```bash
+uv run grimoireplot serve  # in a separate terminal
+uv run uvicorn workshop.07_data_analysis_mcp:app
+```
+
+---
