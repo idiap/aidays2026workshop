@@ -113,7 +113,7 @@ class DataQuery(BaseModel):
     aggregation: Optional[Literal["mean", "sum", "count", "max", "min"]] = None
     sort_by: Optional[str] = None
     ascending: bool = True
-    limit: Optional[int] = 10
+    limit: Optional[int] = None
 
 
 @mcp.tool
@@ -176,7 +176,7 @@ def query_csv(query: DataQuery) -> list[dict]:
         - ascending: bool
             Sort direction (default True).
         - limit: Optional[int]
-            Maximum number of rows to return (default 10).
+            Maximum number of rows to return. If omitted, no limit is applied.
 
     Returns
     -------
@@ -228,7 +228,7 @@ def query_csv(query: DataQuery) -> list[dict]:
         result = result.sort_values(query.sort_by, ascending=query.ascending)
 
     # Limit rows
-    if query.limit:
+    if query.limit is not None:
         result = result.head(query.limit)
 
     return result.reset_index(drop=True).to_dict(orient="records")
