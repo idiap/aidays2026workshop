@@ -144,6 +144,34 @@ uv run python -m workshop.01_first_agent
 
 ---
 
+# Structured Output with Pydantic
+
+Instead of parsing free-form text, you can **constrain** the LLM to return data matching a **Pydantic model**.
+
+```python
+from pydantic import BaseModel, Field
+from pydantic_ai import Agent
+
+class CityInfo(BaseModel):
+    name: str
+    country: str
+    population: int = Field(description="Estimated population")
+
+agent = Agent("openai:gpt-4o", output_type=CityInfo)
+result = agent.run_sync("Tell me about Martigny")
+print(result.output)  # CityInfo(name='Martigny', country='Switzerland', population=20000)
+```
+
+### Why structured output?
+
+- **No manual parsing** — the response is already a typed Python object
+- **Validation built-in** — Pydantic enforces types and constraints automatically
+- **Composable** — use `Field(ge=0, le=6)`, `Literal`, enums, nested models, …
+
+> Pass `output_type=YourModel` to `Agent()` and the LLM is forced to return valid, schema-conforming JSON.
+
+---
+
 # Exercise 02 - Connect Four with structured output
 
 **Use Pydantic models to constrain LLM output**
