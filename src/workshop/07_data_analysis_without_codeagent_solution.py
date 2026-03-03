@@ -134,4 +134,4 @@ Here the columns of the dataset:
 
 Please analyze it and give me insights about when the user asks for it. Be concise and precise, do not give me the whole dataset back, just what the user asks for."""
 app = agent.to_web(instructions=intruction)
-# uv run uvicorn workshop.06_data_analysis_without_codeagent_solution:app
+# uv run uvicorn workshop.07_data_analysis_without_codeagent_solution:app

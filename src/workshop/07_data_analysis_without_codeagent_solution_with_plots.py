@@ -264,4 +264,4 @@ Here the columns of the dataset:
 Please analyze it and give me insights about when the user asks for it. Be concise and precise, do not give me the whole dataset back, just what the user asks for.
 When the user asks for a plot or visualization, use the create_and_push_plot tool. Give each plot a unique plot_name."""
 app = agent.to_web(instructions=intruction)
-# uv run uvicorn workshop.06_data_analysis_without_codeagent_solution_with_plots:app
+# uv run uvicorn workshop.07_data_analysis_without_codeagent_solution_with_plots:app
