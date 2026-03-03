@@ -87,14 +87,29 @@ DATASET_DIR = Path(__file__).parent.parent.parent / "dataset"
 _dataframes: dict[str, pd.DataFrame] = {}
 
 
+def _resolve_csv_path(filename: str) -> Path:
+    """Resolve a CSV filename or path, enforcing the .csv extension constraint.
+
+    Accepts either a bare filename (looked up in DATASET_DIR) or an absolute /
+    relative path to any location on the filesystem.  Only ``.csv`` files are
+    allowed regardless of where they live.
+    """
+    if not filename.endswith(".csv"):
+        raise ValueError(
+            f"Refused to process '{filename}': only .csv files are allowed"
+        )
+    filepath = Path(filename)
+    if not filepath.is_absolute():
+        filepath = DATASET_DIR / filepath
+    return filepath.resolve()
+
+
 def _load_df(filename: str) -> pd.DataFrame:
-    """Load (and cache) a CSV file from the dataset directory."""
+    """Load (and cache) a CSV file.  Bare names are resolved against DATASET_DIR."""
     if filename not in _dataframes:
-        filepath = DATASET_DIR / filename
+        filepath = _resolve_csv_path(filename)
         if not filepath.exists():
-            raise FileNotFoundError(f"File '{filename}' not found in dataset directory")
-        if not filepath.suffix == ".csv":
-            raise ValueError(f"File '{filename}' is not a CSV file")
+            raise FileNotFoundError(f"File '{filename}' not found ({filepath})")
         _dataframes[filename] = pd.read_csv(filepath)
     return _dataframes[filename]
 
