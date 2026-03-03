@@ -1,22 +1,30 @@
 """
-Data analysis with MCP - solution
+Data analysis with MCP — exercise
 
 This exercise introduces the Model Context Protocol (MCP).
-Instead of registering tools directly on the agent (like exercise 06),
+Instead of registering tools directly on the agent (like exercise 07),
 the tools live in a FastMCP server and the agent connects to them
 over the MCP stdio transport — all in the same file.
 
-Key differences from exercise 06:
+YOUR TASK:
+    The four tool functions below (list_csv_files, get_csv_info,
+    query_csv, create_and_push_plot) are already fully implemented,
+    but they are NOT yet exposed as MCP tools.
+
+    Add the ``@mcp.tool`` decorator to each of them so the MCP server
+    advertises them and the agent can discover and call them at runtime.
+
+Key differences from exercise 07:
 - Tools are defined in a FastMCP server (same file, --serve mode)
 - The agent discovers tools at runtime via the MCP protocol
 - The agent can list and select CSV files dynamically (not hardcoded)
 - This decouples the agent from the tool implementation
 
 Run the web agent (spawns the MCP server as a subprocess):
-    uv run uvicorn workshop.07_data_analysis_mcp_solution:app
+    uv run uvicorn workshop.08_data_analysis_mcp:app
 
 Run as MCP server only (stdio transport, used internally by the agent):
-    uv run python -m workshop.07_data_analysis_mcp_solution --serve
+    uv run python -m workshop.08_data_analysis_mcp --serve
 
 Installing as a CLI tool (makes `plot_mcp` available globally):
     uv tool install . -e
@@ -55,9 +63,6 @@ Configuring as an MCP server in VS Code:
     Once configured, VS Code Copilot (or any MCP-aware client) will
     automatically discover the list_csv_files, get_csv_info, query_csv,
     and create_and_push_plot tools.
-
-    Try this prompt in VS Code Copilot Chat:
-      for each csv in dataset/, do 5 relevants plots. use parallel subagents for each csv to speed up the process. Use the csv basename as chapter.
 """
 
 import argparse
@@ -134,7 +139,6 @@ class DataQuery(BaseModel):
     limit: Optional[int] = None
 
 
-@mcp.tool
 def list_csv_files() -> list[str]:
     """List all available CSV files in the dataset directory.
 
@@ -144,7 +148,6 @@ def list_csv_files() -> list[str]:
     return [f.name for f in DATASET_DIR.glob("*.csv")]
 
 
-@mcp.tool
 def get_csv_info(filename: str) -> dict:
     """Get metadata and a preview of a CSV file.
 
@@ -167,7 +170,6 @@ def get_csv_info(filename: str) -> dict:
     }
 
 
-@mcp.tool
 def query_csv(query: DataQuery) -> list[dict]:
     """Execute a structured and safe query against a CSV file loaded as a pandas DataFrame.
 
@@ -269,7 +271,6 @@ class PlotRequest(BaseModel):
     plot_name: str = "plot"
 
 
-@mcp.tool
 def create_and_push_plot(request: PlotRequest) -> dict:
     """Create a plotly express chart from a CSV dataset and push it to the grimoire server for visualization.
 
@@ -372,7 +373,7 @@ def create_and_push_plot(request: PlotRequest) -> dict:
 
 server = MCPServerStdio(
     sys.executable,
-    args=["-m", "workshop.07_data_analysis_mcp_solution", "--serve"],
+    args=["-m", "workshop.08_data_analysis_mcp", "--serve"],
 )
 
 model = pydantic_ai_build_model()
@@ -391,7 +392,7 @@ Be concise and precise. Do not return the whole dataset — just the insights
 the user asks for."""
 
 app = agent.to_web(instructions=instruction)
-# uv run uvicorn workshop.07_data_analysis_mcp_solution:app
+# uv run uvicorn workshop.08_data_analysis_mcp:app
 
 
 # ============================================================================
@@ -413,7 +414,7 @@ def main():
         mcp.run()
     else:
         print("Run the web agent with:")
-        print("  uv run uvicorn workshop.07_data_analysis_mcp_solution:app")
+        print("  uv run uvicorn workshop.08_data_analysis_mcp:app")
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ Pydantic AI supports this via the `output_type` parameter:
    converting a raw string.
 
 Once done, run the game:
-   uv run python -m workshop.015_connect_4_structured_output
+   uv run python -m workshop.02_connect_4_structured_output
 Then open http://localhost:1234 in your browser and play!
 """
 

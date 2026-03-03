@@ -25,4 +25,4 @@ intruction = f"""You are a data analyst, you have the following dataset:
 {data}
 Please analyze it and give me insights about when the user asks for it. Be concise and precise, do not give me the whole dataset back, just what the user asks for."""
 app = agent.to_web(instructions=intruction)
-# run with uv run uvicorn workshop.02_naive_data_analysis_solution:app
+# run with uv run uvicorn workshop.03_naive_data_analysis_solution:app

@@ -22,6 +22,7 @@ plugins:
     - Setup using uv
     - Standalone scripts vs full python project
     - Your first agent using pydantic-ai
+    - Structured output with pydantic
   - Workshop data analysis
     - Naive approach to data analysis
     - Coding agent to the rescue!
@@ -143,7 +144,23 @@ uv run python -m workshop.01_first_agent
 
 ---
 
-# Exercise 02 - Naive data analysis
+# Exercise 02 - Connect Four with structured output
+
+**Use Pydantic models to constrain LLM output**
+
+- Define a `ConnectFourMove` Pydantic model with a constrained `column` field
+- The agent returns valid JSON matching the schema — no parsing needed
+- Play Connect Four against an LLM in the browser!
+
+File: `src/workshop/02_connect_4_structured_output.py`
+
+```bash
+uv run python -m workshop.02_connect_4_structured_output
+```
+
+---
+
+# Exercise 03 - Naive data analysis
 
 **Give raw CSV data directly to the LLM**
 
@@ -152,15 +169,15 @@ uv run python -m workshop.01_first_agent
 - Try asking for the average number of voters
 - Tip: you can use `instructions` (system prompt) with `agent.run_sync`
 
-File: `src/workshop/02_naive_data_analysis.py`
+File: `src/workshop/03_naive_data_analysis.py`
 
 ```bash
-uv run python -m workshop.02_naive_data_analysis
+uv run python -m workshop.03_naive_data_analysis
 ```
 
 ---
 
-# Exercise 03 - Data analysis with CodeAgent
+# Exercise 04 - Data analysis with CodeAgent
 
 **Let the agent write and execute code to analyze data**
 
@@ -168,15 +185,15 @@ uv run python -m workshop.02_naive_data_analysis
 - The agent can write Python code using pandas or polars
 - Build a prompt that provides the dataset path and the user question
 
-File: `src/workshop/03_data_analysis_codeagent.py`
+File: `src/workshop/04_data_analysis_codeagent.py`
 
 ```bash
-uv run python -m workshop.03_data_analysis_codeagent
+uv run python -m workshop.04_data_analysis_codeagent
 ```
 
 ---
 
-# Exercise 04 - CodeAgent with plots
+# Exercise 05 - CodeAgent with plots
 
 **Generate plots using plotly and grimoireplot**
 
@@ -184,16 +201,16 @@ uv run python -m workshop.03_data_analysis_codeagent
 - How do you explain to the model how to use `push_plot_sync`?
 - Run `uv run grimoireplot serve` first, then browse to `http://localhost:8080`
 
-File: `src/workshop/04_data_analysis_codeagent_plots.py`
+File: `src/workshop/05_data_analysis_codeagent_plots.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m workshop.04_data_analysis_codeagent_plots
+uv run python -m workshop.05_data_analysis_codeagent_plots
 ```
 
 ---
 
-# Exercise 05 - CodeAgent with tools
+# Exercise 06 - CodeAgent with tools
 
 **Expose `push_plot_sync` as a proper smolagents tool**
 
@@ -201,16 +218,16 @@ uv run python -m workshop.04_data_analysis_codeagent_plots
 - Add the tool to the `CodeAgent`
 - Docs: https://huggingface.co/docs/smolagents/en/guided_tour#tools
 
-File: `src/workshop/05_data_analysis_codeagent_plot_with_tools.py`
+File: `src/workshop/06_data_analysis_codeagent_plot_with_tools.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m workshop.05_data_analysis_codeagent_plot_with_tools
+uv run python -m workshop.06_data_analysis_codeagent_plot_with_tools
 ```
 
 ---
 
-# Exercise 06 - Data analysis without CodeAgent
+# Exercise 07 - Data analysis without CodeAgent
 
 **Structured queries instead of arbitrary code execution**
 
@@ -219,10 +236,10 @@ uv run python -m workshop.05_data_analysis_codeagent_plot_with_tools
 - The agent translates natural language into structured queries
 - Expose as a web app with `agent.to_web()`
 
-File: `src/workshop/06_data_analysis_without_codeagent.py`
+File: `src/workshop/07_data_analysis_without_codeagent.py`
 
 ```bash
-uv run uvicorn workshop.06_data_analysis_without_codeagent:app
+uv run uvicorn workshop.07_data_analysis_without_codeagent:app
 ```
 
 ---
@@ -249,20 +266,20 @@ MCP reduces this to **M + N** — one protocol both sides implement.
 
 ---
 
-# Exercise 07 - Data analysis with MCP
+# Exercise 08 - Data analysis with MCP
 
 **From framework-specific tools to the Model Context Protocol**
 
-- The tools from exercise 06 are already implemented as plain functions
+- The tools from exercise 07 are already implemented as plain functions
 - Decorate each one with `@mcp.tool` to expose them via FastMCP
 - The agent discovers and calls the tools at runtime over MCP (stdio transport)
 - Functions to expose: `list_csv_files`, `get_csv_info`, `query_csv`, `create_and_push_plot`
 
-File: `src/workshop/07_data_analysis_mcp.py`
+File: `src/workshop/08_data_analysis_mcp.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run uvicorn workshop.07_data_analysis_mcp:app
+uv run uvicorn workshop.08_data_analysis_mcp:app
 ```
 
 ---
