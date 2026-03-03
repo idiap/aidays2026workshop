@@ -55,6 +55,9 @@ Configuring as an MCP server in VS Code:
     Once configured, VS Code Copilot (or any MCP-aware client) will
     automatically discover the list_csv_files, get_csv_info, query_csv,
     and create_and_push_plot tools.
+
+    Try this prompt in VS Code Copilot Chat:
+      for each csv in dataset/, do 5 relevants plots. use parallel subagents for each csv to speed up the process. Use the csv basename as chapter.
 """
 
 import argparse
