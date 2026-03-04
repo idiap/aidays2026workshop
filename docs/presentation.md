@@ -353,3 +353,47 @@ uv run src/workshop/11_search_product_mcp.py            # terminal 2
 ```
 
 ---
+
+# browser-use
+
+**Let an LLM control a real browser** — navigate, click, type, extract data.
+
+### How it works
+
+```
+Agent prompt → browser-use Agent → Chromium (via Playwright) → structured result
+```
+
+- The LLM decides **what to click, scroll, and type** in a live browser session
+- Works with any OpenAI-compatible model (`ChatOpenAI`)
+- Returns structured output via `output_model_schema`
+- Useful when **no API exists** — scrape, fill forms, compare prices, …
+
+### Trade-offs
+
+| Pros | Cons |
+|---|---|
+| Works on any website | Slow (real browser interactions) |
+| No custom scraping code | Non-deterministic (results vary between runs) |
+| Visual understanding | Expensive (many LLM calls per task) |
+
+---
+
+# Exercise 12 - Browser-use as an MCP tool
+
+**Wrap a browser-use agent inside an MCP tool so your main agent can browse the web**
+
+- Define the `BrowserResult` Pydantic model with a field to hold the browser agent's answer
+- The MCP server exposes a `browser_use` tool that spawns a full browser automation agent
+- The main agent discovers it over **Streamable HTTP** and delegates web tasks
+- Run the MCP server first (`--server`), then the agent in a separate terminal
+- Try asking: *"What is the cheapest RTX 5090 on digitec.ch?"*
+
+File: `src/workshop/12_search_product_browser_use.py`
+
+```bash
+uv run src/workshop/12_search_product_browser_use.py --server   # terminal 1
+uv run src/workshop/12_search_product_browser_use.py            # terminal 2
+```
+
+---
