@@ -13,6 +13,7 @@ authors = [
 ]
 
 dependencies = [
+    "browser-use>=0.5.9",
     "fastmcp>=2.14.5",
     "grimoireplot",
     "loguru>=0.7.3",
