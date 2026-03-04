@@ -1,4 +1,5 @@
 from fastmcp import FastMCP
+from pydantic import BaseModel
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 
@@ -13,6 +14,10 @@ import uvicorn
 from workshop.common import pydantic_ai_build_model
 
 load_dotenv()
+
+
+class BrowserResult(BaseModel):
+    answer: str
 
 
 def _build_browser_use_llm() -> ChatOpenAI:
@@ -57,12 +62,14 @@ def run_mcp_server(host: str = "0.0.0.0", port: int = 8000):
             task=task,
             llm=llm,
             use_thinking=False,
+            output_model_schema=BrowserResult,
         )
         history = await agent.run()
         result = history.final_result()
-        return (
-            result if result else "Browser task completed but no content was extracted."
-        )
+        if result:
+            parsed = BrowserResult.model_validate_json(result)
+            return parsed.answer
+        return "Browser task completed but no content was extracted."
 
     mcp.run(transport="http", host=host, port=port)
 
