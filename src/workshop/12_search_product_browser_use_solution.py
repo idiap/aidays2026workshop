@@ -45,7 +45,7 @@ def run_mcp_server(host: str = "0.0.0.0", port: int = 8000):
     mcp = FastMCP("My MCP Server for AI Days 2026 Workshop")
 
     @mcp.tool
-    async def browser_use(task: str) -> str:
+    async def browser_use(task: str) -> BrowserResult | str:
         """Use a browser automation agent to perform a task on the web.
 
         The task should describe what you want the browser agent to do,
@@ -68,7 +68,7 @@ def run_mcp_server(host: str = "0.0.0.0", port: int = 8000):
         result = history.final_result()
         if result:
             parsed = BrowserResult.model_validate_json(result)
-            return parsed.answer
+            return parsed
         return "Browser task completed but no content was extracted."
 
     mcp.run(transport="http", host=host, port=port)
