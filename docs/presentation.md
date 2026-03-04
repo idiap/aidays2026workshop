@@ -334,3 +334,22 @@ The parent **plans and delegates**; each subagent runs independently, then retur
 - **Scalability** — add a subagent, don't rewrite the orchestrator
 
 ---
+
+# Exercise 11 - Search products with MCP
+
+**Build an MCP server that lets an agent search & filter Digitec products**
+
+- The MCP server already defines several tool stubs — fill in the two `TODO`s
+- The imported helper functions have everything you need
+- Don't forget to remove the `type: ignore` comments once implemented
+- Run the MCP server first (`--server`), then the agent in a separate terminal
+- The agent connects over **Streamable HTTP** and discovers tools at runtime
+
+File: `src/workshop/11_search_product_mcp.py`
+
+```bash
+uv run src/workshop/11_search_product_mcp.py --server   # terminal 1
+uv run src/workshop/11_search_product_mcp.py            # terminal 2
+```
+
+---
