@@ -26,7 +26,7 @@ class DataQuery(BaseModel):
     aggregation: Optional[Literal["mean", "sum", "count", "max", "min"]] = None
     sort_by: Optional[str] = None
     ascending: bool = True
-    limit: Optional[int] = 10
+    limit: Optional[int] = None
 
 
 load_dotenv()
@@ -107,21 +107,30 @@ def query_dataframe(query: DataQuery):
 
     # Grouping + aggregation, or aggregation alone
     if query.group_by and query.aggregation:
-        result = getattr(result.groupby(query.group_by), query.aggregation)(
-            numeric_only=True
-        ).reset_index()
+        grouped = result.groupby(query.group_by)
+        if query.aggregation == "count":
+            result = grouped.count().reset_index()
+        else:
+            result = getattr(grouped, query.aggregation)(
+                numeric_only=True
+            ).reset_index()
     elif query.aggregation:
-        result = result.agg(query.aggregation, numeric_only=True).to_frame().T
+        if query.aggregation == "count":
+            result = result.count().to_frame().T
+        else:
+            result = result.agg(query.aggregation, numeric_only=True).to_frame().T
 
     # Sorting
     if query.sort_by:
         result = result.sort_values(query.sort_by, ascending=query.ascending)
 
     # Limit rows
-    if query.limit:
+    if query.limit is not None:
         result = result.head(query.limit)
 
-    return result.reset_index(drop=True).to_dict(orient="records")
+    result = result.reset_index(drop=True)
+    result = result.fillna("")
+    return result.to_dict(orient="records")
 
 
 data = df.head()
