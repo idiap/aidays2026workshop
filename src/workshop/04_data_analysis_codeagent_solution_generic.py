@@ -13,7 +13,7 @@ load_dotenv()
 def build_agent():
     model = smolagents_build_model()
     agent = CodeAgent(
-        model=model, tools=[], additional_authorized_imports=["polars, pandas"]
+        model=model, tools=[], additional_authorized_imports=["polars", "pandas"]
     )
     return agent
 
