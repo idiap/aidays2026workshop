@@ -288,7 +288,7 @@ uv run python -m workshop.06_data_analysis_codeagent_plot_with_tools
 File: `src/workshop/07_data_analysis_without_codeagent.py`
 
 ```bash
-uv run uvicorn workshop.07_data_analysis_without_codeagent:app
+uv run python -m workshop.07_data_analysis_without_codeagent
 ```
 
 ---
@@ -328,7 +328,7 @@ File: `src/workshop/08_data_analysis_mcp.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run uvicorn workshop.08_data_analysis_mcp:app
+uv run python -m workshop.08_data_analysis_mcp
 ```
 
 ---

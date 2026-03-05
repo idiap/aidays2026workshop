@@ -21,7 +21,7 @@ Key differences from exercise 07:
 - This decouples the agent from the tool implementation
 
 Run the web agent (spawns the MCP server as a subprocess):
-    uv run uvicorn workshop.08_data_analysis_mcp:app
+    uv run python -m workshop.08_data_analysis_mcp
 
 Run as MCP server only (stdio transport, used internally by the agent):
     uv run python -m workshop.08_data_analysis_mcp --serve
@@ -72,6 +72,7 @@ from typing import List, Literal, Optional
 
 import pandas as pd
 import plotly.express as px
+import uvicorn
 from dotenv import load_dotenv
 from fastmcp import FastMCP
 from grimoireplot.client import push_plot_sync
@@ -371,15 +372,21 @@ def create_and_push_plot(request: PlotRequest) -> dict:
 # Pydantic AI Agent — connects to this same file's MCP server via stdio
 # ============================================================================
 
-server = MCPServerStdio(
-    sys.executable,
-    args=["-m", "workshop.08_data_analysis_mcp", "--serve"],
-)
 
-model = pydantic_ai_build_model()
-agent = Agent(model, toolsets=[server])
+def build_agent() -> Agent:
+    server = MCPServerStdio(
+        sys.executable,
+        args=["-m", "workshop.08_data_analysis_mcp", "--serve"],
+    )
 
-instruction = """You are a data analyst with access to CSV datasets and plotting tools via MCP.
+    model = pydantic_ai_build_model()
+    agent = Agent(model, toolsets=[server])
+    return agent
+
+
+def run_agent():
+    agent = build_agent()
+    instruction = """You are a data analyst with access to CSV datasets and plotting tools via MCP.
 
 When the user asks a question:
 1. First call list_csv_files to discover available datasets.
@@ -391,8 +398,8 @@ When the user asks a question:
 Be concise and precise. Do not return the whole dataset — just the insights
 the user asks for."""
 
-app = agent.to_web(instructions=instruction)
-# uv run uvicorn workshop.08_data_analysis_mcp:app
+    app = agent.to_web(instructions=instruction)
+    uvicorn.run(app, host="127.0.0.1", port=9000, reload=False)
 
 
 # ============================================================================
@@ -413,8 +420,7 @@ def main():
     if args.serve:
         mcp.run()
     else:
-        print("Run the web agent with:")
-        print("  uv run uvicorn workshop.08_data_analysis_mcp:app")
+        run_agent()
 
 
 if __name__ == "__main__":
