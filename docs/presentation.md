@@ -16,6 +16,27 @@ plugins:
 
 ---
 
+# Learning Objectives
+
+### What you will learn
+
+- Build AI agents in Python with **pydantic-ai** and **smolagents**
+- Use **structured output** to get typed, validated responses from LLMs
+- Analyze data with coding agents and safe tool-based approaches
+- Expose and consume tools via the **Model Context Protocol** (MCP)
+- Automate browser interactions with **browser-use**
+
+### What is NOT covered
+
+- Prompt injection, jailbreaking, and LLM security
+- Fine-tuning or training models
+- Retrieval-Augmented Generation (RAG)
+- Multi-agent orchestration and planning strategies
+- Evaluation and benchmarking of agents
+- Production deployment, observability, and cost management
+
+---
+
 # Planning
 
   - Setup a modern python environment
