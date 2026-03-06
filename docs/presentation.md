@@ -226,6 +226,31 @@ uv run python -m workshop.03_naive_data_analysis
 
 ---
 
+# smolagents & CodeAgent
+
+**smolagents** is Hugging Face's lightweight library for building agents that can **write and execute code**.
+
+### CodeAgent
+
+A `CodeAgent` **writes Python code** to solve the task, then runs it in a sandboxed interpreter.
+
+```
+User question → LLM generates Python code → execute in sandbox → return result
+```
+
+| Feature | Description |
+|---|---|
+| **Code generation** | The LLM writes full Python snippets (pandas, polars, plotly, …) |
+| **Sandboxed execution** | Code runs in a restricted environment with controlled imports |
+| **Tool integration** | You can register custom tools the agent can call from generated code |
+| **Iterative** | If execution fails, the agent retries with corrected code |
+
+### What about pydantic-ai?
+
+Pydantic is also exploring code agents with **[Monty](https://github.com/pydantic/monty)**
+
+---
+
 # Exercise 04 - Data analysis with CodeAgent
 
 **Let the agent write and execute code to analyze data**
