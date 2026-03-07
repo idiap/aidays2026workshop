@@ -24,12 +24,17 @@ Once done, run the game:
 Then open http://localhost:1234 in your browser and play!
 """
 
+import argparse
+
 from pydantic import BaseModel, Field  # noqa: F401 – you'll need BaseModel & Field
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 from nicegui import ui
 
-from workshop.common import pydantic_ai_build_model
+from workshop.common import (
+    pydantic_ai_build_model,
+    pydantic_ai_build_high_reasoning_settings,
+)
 
 load_dotenv()
 
@@ -63,11 +68,13 @@ BG_COLOR = "#1e3a5f"
 ConnectFourMove = str  # ← Replace this with your Pydantic model
 
 
-def build_agent() -> Agent[None, ConnectFourMove]:
+def build_agent(high_reasoning: bool = False) -> Agent[None, ConnectFourMove]:
     model = pydantic_ai_build_model()
+    settings = pydantic_ai_build_high_reasoning_settings() if high_reasoning else None
     agent = Agent(
         model,
         output_type=ConnectFourMove,
+        model_settings=settings,
         system_prompt=(
             "You are playing Connect Four as player O. "
             "The board is shown with '.' for empty, 'X' for player 1, 'O' for you. "
@@ -78,7 +85,15 @@ def build_agent() -> Agent[None, ConnectFourMove]:
     return agent
 
 
-agent = build_agent()
+parser = argparse.ArgumentParser(description="Connect Four with LLM agent")
+parser.add_argument(
+    "--high-reasoning",
+    action="store_true",
+    help="Enable high reasoning effort for the LLM",
+)
+args, _ = parser.parse_known_args()
+
+agent = build_agent(high_reasoning=args.high_reasoning)
 
 
 # ── Pure game logic ─────────────────────────────────────────
