@@ -2,7 +2,11 @@
 Common utilities for the workshop.
 """
 
-from pydantic_ai.models.openai import OpenAIChatModel, OpenAIResponsesModel
+from pydantic_ai.models.openai import (
+    OpenAIChatModel,
+    OpenAIResponsesModel,
+    OpenAIResponsesModelSettings,
+)
 from pydantic_ai.providers.openai import OpenAIProvider
 from smolagents import OpenAIModel
 from dotenv import load_dotenv
@@ -80,6 +84,28 @@ def pydantic_ai_build_model(
         return pydantic_ai_build_model_openai_responses(provider)
     else:
         return pydantic_ai_build_model_openai_chat(provider)
+
+
+def pydantic_ai_build_high_reasoning_settings() -> OpenAIResponsesModelSettings:
+    """
+    Build OpenAIResponsesModelSettings with high reasoning effort and detailed summary.
+    """
+    return OpenAIResponsesModelSettings(
+        openai_reasoning_effort="high",
+        openai_reasoning_summary="detailed",
+    )
+
+
+def pydantic_ai_build_model_with_high_reasoning(
+    provider: OpenAIProvider | None = None,
+) -> tuple[OpenAIChatModel | OpenAIResponsesModel, OpenAIResponsesModelSettings]:
+    """
+    Build a model with high reasoning effort settings.
+    Returns a tuple of (model, settings) ready to pass to Agent.
+    """
+    model = pydantic_ai_build_model(provider)
+    settings = pydantic_ai_build_high_reasoning_settings()
+    return model, settings
 
 
 def smolagents_build_model() -> OpenAIModel:
