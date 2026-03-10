@@ -443,3 +443,11 @@ uv run src/workshop/12_search_product_browser_use.py            # terminal 2
 ```
 
 ---
+
+# End of the workshop
+
+William Droz <william.droz@idiap.ch>
+
+![qr code linkedin](./qr_image.png)
+
+---
