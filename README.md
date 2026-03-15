@@ -99,7 +99,7 @@ uv run playwright install
 Install all optional dependencies:
 
 ```bash
-uv sync --extra dev --extra docs --extra scraping
+uv sync --all-groups --extra scraping
 uv run playwright install
 ```
 
