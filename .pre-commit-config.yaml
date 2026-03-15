@@ -24,3 +24,8 @@ repos:
     rev: v6.2.0
     hooks:
       - id: reuse
+  - repo: https://github.com/wdroz/PurifyLLM
+    rev: v0.1.1
+    hooks:
+    - id: purify-llm
+      exclude: '(^|/)(LICENSES|licenses)/'

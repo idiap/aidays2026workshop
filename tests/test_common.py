@@ -75,7 +75,7 @@ def test_build_model_with_explicit_provider():
 
 
 # ---------------------------------------------------------------------------
-# Agent integration – just verify it responds
+# Agent integration - just verify it responds
 # ---------------------------------------------------------------------------
 
 
@@ -90,7 +90,7 @@ def test_agent_responds():
 
 
 # ---------------------------------------------------------------------------
-# smolagents – model builder
+# smolagents - model builder
 # ---------------------------------------------------------------------------
 
 
@@ -106,7 +106,7 @@ def test_smolagents_build_model_raises_without_api_key(monkeypatch):
 
 
 # ---------------------------------------------------------------------------
-# smolagents – agent integration
+# smolagents - agent integration
 # ---------------------------------------------------------------------------
 
 

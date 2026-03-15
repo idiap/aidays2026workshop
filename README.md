@@ -1,4 +1,4 @@
-# AI Days 2026 Workshop — Getting Started with AI Agents in Python
+# AI Days 2026 Workshop - Getting Started with AI Agents in Python
 
 The slides are available [here](https://wdroz.pages.idiap.ch/aidays2026workshop).
 
@@ -50,7 +50,7 @@ cp env.openai.example .env   # or env.grok.example / env.vllm.example
 | `LLM_MODEL_NAME` | No | Model to use (defaults to `gpt-5.2`) |
 | `LLM_USE_OPENRESPONSES` | No | `true` to use the OpenAI Responses API when possible |
 
-## Workshop 0x — Data Analysis
+## Workshop 0x - Data Analysis
 
 ### Install dependencies
 
@@ -62,14 +62,14 @@ uv sync
 
 | # | Topic | File | Run command |
 |---|---|---|---|
-| 01 | **Your first agent** — build an agent with pydantic-ai | `src/workshop/01_first_agent.py` | `uv run python -m workshop.01_first_agent` |
-| 02 | **Structured output** — Connect Four against an LLM using Pydantic models | `src/workshop/02_connect_4_structured_output.py` | `uv run python -m workshop.02_connect_4_structured_output` |
-| 03 | **Naive data analysis** — pass raw CSV data to the LLM | `src/workshop/03_naive_data_analysis.py` | `uv run python -m workshop.03_naive_data_analysis` |
-| 04 | **CodeAgent** — let smolagents write & execute pandas/polars code | `src/workshop/04_data_analysis_codeagent.py` | `uv run python -m workshop.04_data_analysis_codeagent` |
-| 05 | **CodeAgent + plots** — generate plotly plots via grimoireplot | `src/workshop/05_data_analysis_codeagent_plots.py` | `uv run grimoireplot serve` then `uv run python -m workshop.05_data_analysis_codeagent_plots` |
-| 06 | **CodeAgent + tools** — expose `push_plot_sync` as a smolagents tool | `src/workshop/06_data_analysis_codeagent_plot_with_tools.py` | `uv run grimoireplot serve` then `uv run python -m workshop.06_data_analysis_codeagent_plot_with_tools` |
-| 07 | **Safe data analysis** — structured queries instead of code execution | `src/workshop/07_data_analysis_without_codeagent.py` | `uv run python -m workshop.07_data_analysis_without_codeagent` |
-| 08 | **MCP data analysis** — expose tools via FastMCP (stdio transport) | `src/workshop/08_data_analysis_mcp.py` | `uv run grimoireplot serve` then `uv run python -m workshop.08_data_analysis_mcp` |
+| 01 | **Your first agent** - build an agent with pydantic-ai | `src/workshop/01_first_agent.py` | `uv run python -m workshop.01_first_agent` |
+| 02 | **Structured output** - Connect Four against an LLM using Pydantic models | `src/workshop/02_connect_4_structured_output.py` | `uv run python -m workshop.02_connect_4_structured_output` |
+| 03 | **Naive data analysis** - pass raw CSV data to the LLM | `src/workshop/03_naive_data_analysis.py` | `uv run python -m workshop.03_naive_data_analysis` |
+| 04 | **CodeAgent** - let smolagents write & execute pandas/polars code | `src/workshop/04_data_analysis_codeagent.py` | `uv run python -m workshop.04_data_analysis_codeagent` |
+| 05 | **CodeAgent + plots** - generate plotly plots via grimoireplot | `src/workshop/05_data_analysis_codeagent_plots.py` | `uv run grimoireplot serve` then `uv run python -m workshop.05_data_analysis_codeagent_plots` |
+| 06 | **CodeAgent + tools** - expose `push_plot_sync` as a smolagents tool | `src/workshop/06_data_analysis_codeagent_plot_with_tools.py` | `uv run grimoireplot serve` then `uv run python -m workshop.06_data_analysis_codeagent_plot_with_tools` |
+| 07 | **Safe data analysis** - structured queries instead of code execution | `src/workshop/07_data_analysis_without_codeagent.py` | `uv run python -m workshop.07_data_analysis_without_codeagent` |
+| 08 | **MCP data analysis** - expose tools via FastMCP (stdio transport) | `src/workshop/08_data_analysis_mcp.py` | `uv run grimoireplot serve` then `uv run python -m workshop.08_data_analysis_mcp` |
 
 ### Datasets
 
@@ -78,7 +78,7 @@ uv sync
 | `dataset/voting.csv` | [Swiss Popular Voting](https://www.kaggle.com/datasets/vascos/swiss-popular-voting) | MIT |
 | `dataset/cs_students.csv` | [CS Students Performance](https://www.kaggle.com/datasets/zahranusratt/cs-students-performance-dataset) | Public domain |
 
-## Workshop 1x — Building Tools (MCPs) for Digitec/Galaxus
+## Workshop 1x - Building Tools (MCPs) for Digitec/Galaxus
 
 ### Install dependencies
 
@@ -91,8 +91,8 @@ uv run playwright install
 
 | # | Topic | File | Run command |
 |---|---|---|---|
-| 11 | **Product search MCP** — build an MCP server to search & filter Digitec products | `src/workshop/11_search_product_mcp.py` | `uv run src/workshop/11_search_product_mcp.py --server` (terminal 1) then `uv run src/workshop/11_search_product_mcp.py` (terminal 2) |
-| 12 | **Browser-use MCP** — wrap browser-use in an MCP tool for web automation | `src/workshop/12_search_product_browser_use.py` | `uv run src/workshop/12_search_product_browser_use.py --server` (terminal 1) then `uv run src/workshop/12_search_product_browser_use.py` (terminal 2) |
+| 11 | **Product search MCP** - build an MCP server to search & filter Digitec products | `src/workshop/11_search_product_mcp.py` | `uv run src/workshop/11_search_product_mcp.py --server` (terminal 1) then `uv run src/workshop/11_search_product_mcp.py` (terminal 2) |
+| 12 | **Browser-use MCP** - wrap browser-use in an MCP tool for web automation | `src/workshop/12_search_product_browser_use.py` | `uv run src/workshop/12_search_product_browser_use.py --server` (terminal 1) then `uv run src/workshop/12_search_product_browser_use.py` (terminal 2) |
 
 ## For Developers
 

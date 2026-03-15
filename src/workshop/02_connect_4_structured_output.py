@@ -3,14 +3,14 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 """
-Connect Four game with NiceGUI – Player 2 is an LLM agent using structured output.
+Connect Four game with NiceGUI - Player 2 is an LLM agent using structured output.
 
 ## Why structured output?
 
 When an LLM returns free-form text, you need fragile parsing to extract
 usable data (e.g. "I'll play column 3" → parse the int 3).
 With **structured output**, you define a Pydantic model and the LLM is
-constrained to return valid JSON matching that schema – no parsing needed.
+constrained to return valid JSON matching that schema - no parsing needed.
 
 Pydantic AI supports this via the `output_type` parameter:
   https://ai.pydantic.dev/output/
@@ -30,7 +30,7 @@ Then open http://localhost:1234 in your browser and play!
 
 import argparse
 
-from pydantic import BaseModel, Field  # noqa: F401 – you'll need BaseModel & Field
+from pydantic import BaseModel, Field  # noqa: F401 - you'll need BaseModel & Field
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 from nicegui import ui
@@ -52,10 +52,10 @@ BG_COLOR = "#1e3a5f"
 
 # ── Structured output for the agent ────────────────────────
 #
-# TODO 1/2 – Define a Pydantic model for the agent's move
+# TODO 1/2 - Define a Pydantic model for the agent's move
 #
 #   Right now `ConnectFourMove` is just `str`, so the agent returns plain text
-#   and we have to do `int(result.output)` later – fragile!
+#   and we have to do `int(result.output)` later - fragile!
 #
 #   Replace the line `ConnectFourMove = str` with a proper Pydantic model:
 #
@@ -63,9 +63,9 @@ BG_COLOR = "#1e3a5f"
 #         column: int = Field(..., ge=0, le=6, description="Column index (0-6) to drop the piece")
 #
 #   Key concepts:
-#     • `BaseModel` – base class for all Pydantic models
-#     • `Field(ge=0, le=6)` – constrains the int to [0, 6]
-#     • `description=...` – tells the LLM what this field means
+#     • `BaseModel` - base class for all Pydantic models
+#     • `Field(ge=0, le=6)` - constrains the int to [0, 6]
+#     • `description=...` - tells the LLM what this field means
 #
 #   Docs: https://docs.pydantic.dev/latest/concepts/fields/
 #
@@ -200,7 +200,7 @@ async def play_column(col: int) -> None:
         status_text = "It's a draw!"
     else:
         current_player = 2
-        status_text = f"Player 2 ({PLAYER_SYMBOLS[2]}) is thinking…"
+        status_text = f"Player 2 ({PLAYER_SYMBOLS[2]}) is thinking..."
 
     status_label.text = status_text
     board_ui.refresh()
@@ -217,7 +217,7 @@ async def agent_turn() -> None:
 
     board_str = board_to_string(board)
     result = await agent.run(f"Current board:\n{board_str}")
-    # TODO 2/2 – Access the structured output
+    # TODO 2/2 - Access the structured output
     #
     #   Once ConnectFourMove is a Pydantic model, `result.output` is a
     #   ConnectFourMove instance (not a string). Access the column with:
@@ -229,7 +229,7 @@ async def agent_turn() -> None:
 
     row = drop_piece(board, col, 2)
     if row is None:
-        # Agent picked a full column – pick first available as fallback
+        # Agent picked a full column - pick first available as fallback
         for fallback in range(COLS):
             row = drop_piece(board, fallback, 2)
             if row is not None:
