@@ -1,4 +1,8 @@
-"""Connect Four game with NiceGUI – Player 2 is an LLM agent using structured output."""
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+# SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+# SPDX-License-Identifier: GPL-3.0-only
+
+"""Connect Four game with NiceGUI - Player 2 is an LLM agent using structured output."""
 
 import argparse
 
