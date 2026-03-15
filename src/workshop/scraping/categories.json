@@ -1,0 +1,136 @@
+{
+  "Motherboard": {
+    "url": "https://www.digitec.ch/fr/s1/producttype/carte-mere-65",
+    "filters": {
+      "Chipset": {
+        "category_id": "8658",
+        "values": {
+          "AMD B850": "5071372",
+          "Intel B760": "1240786",
+          "Intel Z890": "",
+          "AMD B650": "1060071",
+          "Intel B860": "5527193",
+          "AMD B550": "572447",
+          "Intel H610": "881470",
+          "AMD X870E": "3837531",
+          "AMD X870": "3837530",
+          "AMD A620": "1296060"
+        }
+      },
+      "Socket": {
+        "category_id": "12",
+        "values": {
+          "AM5": "932361",
+          "LGA 1700": "784223",
+          "LGA 1851": "3801579",
+          "AM4": "332514",
+          "LGA 1200": "558386",
+          "SP5": "1299302",
+          "LGA 4677": "859401",
+          "LGA 1151": "278729",
+          "sTR5": "1555396",
+          "LGA 2066": "353496"
+        }
+      },
+      "Type de mémoire vive": {
+        "category_id": "3195",
+        "values": {
+          "RAM DDR5": "804383",
+          "RAM DDR4": "8135",
+          "RAM DDR3": "1160",
+          "DDR-RAM": "1158",
+          "RAM LPDDR3": "200612"
+        }
+      }
+    }
+  },
+  "GPU": {
+    "url": "https://www.digitec.ch/fr/s1/producttype/carte-graphique-106",
+    "filters": {
+      "Modèle de carte graphique": {
+        "category_id": "347",
+        "values": {
+          "GeForce RTX 5060 Ti": "7113016",
+          "GeForce RTX 5060": "7113015",
+          "GeForce RTX 5070": "5147910",
+          "GeForce RTX 5080": "5147912",
+          "GeForce RTX 5070 Ti": "5147911",
+          "Radeon RX 9070 XT": "6291910",
+          "Radeon RX 9060 XT": "7709265",
+          "GeForce RTX 3050": "709324",
+          "GeForce RTX 5090": "5147913",
+          "GeForce RTX 5050": "7517479"
+        }
+      }
+    }
+  },
+  "CPU": {
+    "url": "https://www.digitec.ch/fr/s1/producttype/processeur-83",
+    "filters": {
+      "Socket": {
+        "category_id": "12",
+        "values": {
+          "LGA 4189": "739617",
+          "LGA 4677": "859401",
+          "Prise P": "378016",
+          "LGA 1700": "784223",
+          "SP3": "414445",
+          "SP5": "1299302",
+          "AM5": "932361",
+          "AM4": "332514",
+          "LGA 3647": "374599",
+          "LGA 4710": "7878358"
+        }
+      },
+      "Famille de processeur": {
+        "category_id": "746",
+        "values": {
+          "Xeon Gold": "671008",
+          "Epyc": "414443",
+          "Xeon Silver": "881473",
+          "Xeon Platinum": "1016758",
+          "Xeon": "127",
+          "Xeon W": "388499",
+          "Xeon Scalable Processors": "370378",
+          "Xeon E": "881474",
+          "Ryzen Threadripper Pro": "1016759",
+          "Xeon E5": "166977"
+        }
+      }
+    }
+  },
+  "RAM": {
+    "url": "https://www.digitec.ch/fr/s1/producttype/memoire-vive-2",
+    "filters": {
+      "Configuration de la mémoire": {
+        "category_id": "22035",
+        "values": {
+          "1 x 16GB": "722555",
+          "1 x 8GB": "722576",
+          "1 x 32GB": "722566",
+          "2 x 16GB": "722583",
+          "2 x 32GB": "722587",
+          "1 x 4GB": "722569",
+          "2 x 8GB": "722593",
+          "1 x 64GB": "722574",
+          "2 x 24 Go": "1299299",
+          "4 x 16GB": "722575"
+        }
+      },
+      "Type de mémoire vive": {
+        "category_id": "3195",
+        "values": {
+          "RAM DDR4": "8135",
+          "RAM DDR5": "804383",
+          "RAM DDR3": "1160",
+          "RAM DDR3L": "19178",
+          "DDR2-RAM": "1159",
+          "DDR-RAM": "1158",
+          "LPDDR5X-RAM": "1212374",
+          "DDR3L-RS-RAM": "523050",
+          "DDR3U-RAM": "19179"
+        }
+      }
+    }
+  }
+}

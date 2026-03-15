@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+SPDX-License-Identifier: GPL-3.0-only
+-->
+
 ---
 slides:
     theme: solarized
@@ -132,10 +138,10 @@ uv sync
 
 An **agent** is a program that uses an LLM as its reasoning engine to **decide** what actions to take.
 
-- **Takes a goal** — a user prompt or task description
-- **Reasons** — the LLM interprets the goal and plans steps
-- **Acts** — it can call tools, run code, or fetch data
-- **Iterates** — it loops until the goal is satisfied
+- **Takes a goal** - a user prompt or task description
+- **Reasons** - the LLM interprets the goal and plans steps
+- **Acts** - it can call tools, run code, or fetch data
+- **Iterates** - it loops until the goal is satisfied
 
 ### Agent vs. simple LLM call
 
@@ -185,9 +191,9 @@ print(result.output)  # CityInfo(name='Martigny', country='Switzerland', populat
 
 ### Why structured output?
 
-- **No manual parsing** — the response is already a typed Python object
-- **Validation built-in** — Pydantic enforces types and constraints automatically
-- **Composable** — use `Field(ge=0, le=6)`, `Literal`, enums, nested models, …
+- **No manual parsing** - the response is already a typed Python object
+- **Validation built-in** - Pydantic enforces types and constraints automatically
+- **Composable** - use `Field(ge=0, le=6)`, `Literal`, enums, nested models, ...
 
 > Pass `output_type=YourModel` to `Agent()` and the LLM is forced to return valid, schema-conforming JSON.
 
@@ -198,7 +204,7 @@ print(result.output)  # CityInfo(name='Martigny', country='Switzerland', populat
 **Use Pydantic models to constrain LLM output**
 
 - Define a `ConnectFourMove` Pydantic model with a constrained `column` field
-- The agent returns valid JSON matching the schema — no parsing needed
+- The agent returns valid JSON matching the schema - no parsing needed
 - Play Connect Four against an LLM in the browser!
 
 File: `src/workshop/02_connect_4_structured_output.py`
@@ -240,7 +246,7 @@ User question → LLM generates Python code → execute in sandbox → return re
 
 | Feature | Description |
 |---|---|
-| **Code generation** | The LLM writes full Python snippets (pandas, polars, plotly, …) |
+| **Code generation** | The LLM writes full Python snippets (pandas, polars, plotly, ...) |
 | **Sandboxed execution** | Code runs in a restricted environment with controlled imports |
 | **Tool integration** | You can register custom tools the agent can call from generated code |
 | **Iterative** | If execution fails, the agent retries with corrected code |
@@ -318,7 +324,7 @@ uv run python -m workshop.07_data_analysis_without_codeagent
 
 ---
 
-# MCPs — Model Context Protocol
+# MCPs - Model Context Protocol
 
 A **standard protocol** for AI agents to discover and call external tools, data sources, and services.
 
@@ -326,17 +332,17 @@ A **standard protocol** for AI agents to discover and call external tools, data 
 
 Without MCP, every agent framework needs **custom glue code** for every tool → M×N integrations.
 
-MCP reduces this to **M + N** — one protocol both sides implement.
+MCP reduces this to **M + N** - one protocol both sides implement.
 
 ### How it works
 
 | Component | Role |
 |---|---|
 | **MCP Server** | Exposes **tools** (functions), **resources** (data), **prompts** (templates) |
-| **MCP Client** | Embedded in the agent — discovers and invokes capabilities at runtime |
+| **MCP Client** | Embedded in the agent - discovers and invokes capabilities at runtime |
 | **Transport** | **stdio** (local) or **Streamable HTTP** (remote) |
 
-> Think of MCP as **USB-C for AI integrations** — plug any tool into any agent.
+> Think of MCP as **USB-C for AI integrations** - plug any tool into any agent.
 
 ---
 
@@ -374,10 +380,10 @@ The parent **plans and delegates**; each subagent runs independently, then retur
 
 ### Why subagents?
 
-- **Modularity** — focused prompt & toolset per subagent
-- **Parallelism** — simultaneous execution, lower wall-clock time
-- **Separation of concerns** — orchestrator plans, subagents execute
-- **Scalability** — add a subagent, don't rewrite the orchestrator
+- **Modularity** - focused prompt & toolset per subagent
+- **Parallelism** - simultaneous execution, lower wall-clock time
+- **Separation of concerns** - orchestrator plans, subagents execute
+- **Scalability** - add a subagent, don't rewrite the orchestrator
 
 ---
 
@@ -385,7 +391,7 @@ The parent **plans and delegates**; each subagent runs independently, then retur
 
 **Build an MCP server that lets an agent search & filter Digitec products**
 
-- The MCP server already defines several tool stubs — fill in the two `TODO`s
+- The MCP server already defines several tool stubs - fill in the two `TODO`s
 - The imported helper functions have everything you need
 - Don't forget to remove the `type: ignore` comments once implemented
 - Run the MCP server first (`--server`), then the agent in a separate terminal
@@ -402,7 +408,7 @@ uv run src/workshop/11_search_product_mcp.py            # terminal 2
 
 # browser-use
 
-**Let an LLM control a real browser** — navigate, click, type, extract data.
+**Let an LLM control a real browser** - navigate, click, type, extract data.
 
 ### How it works
 
@@ -413,7 +419,7 @@ Agent prompt → browser-use Agent → Chromium (via Playwright) → structured 
 - The LLM decides **what to click, scroll, and type** in a live browser session
 - Works with any OpenAI-compatible model (`ChatOpenAI`)
 - Returns structured output via `output_model_schema`
-- Useful when **no API exists** — scrape, fill forms, compare prices, …
+- Useful when **no API exists** - scrape, fill forms, compare prices, ...
 
 ### Trade-offs
 

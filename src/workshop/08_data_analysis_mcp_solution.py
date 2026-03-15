@@ -1,10 +1,14 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+# SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+# SPDX-License-Identifier: GPL-3.0-only
+
 """
 Data analysis with MCP - solution
 
 This exercise introduces the Model Context Protocol (MCP).
 Instead of registering tools directly on the agent (like exercise 07),
 the tools live in a FastMCP server and the agent connects to them
-over the MCP stdio transport — all in the same file.
+over the MCP stdio transport - all in the same file.
 
 Key differences from exercise 07:
 - Tools are defined in a FastMCP server (same file, --serve mode)
@@ -81,7 +85,7 @@ load_dotenv()
 
 
 # ============================================================================
-# MCP Server — FastMCP tools for CSV data analysis
+# MCP Server - FastMCP tools for CSV data analysis
 # ============================================================================
 
 mcp = FastMCP("CSV Data Analysis Server")
@@ -368,7 +372,7 @@ def create_and_push_plot(request: PlotRequest) -> dict:
 
 
 # ============================================================================
-# Pydantic AI Agent — connects to this same file's MCP server via stdio
+# Pydantic AI Agent - connects to this same file's MCP server via stdio
 # ============================================================================
 
 
@@ -394,7 +398,7 @@ When the user asks a question:
 4. When the user asks for a plot or visualization, use create_and_push_plot.
    Give each plot a unique plot_name.
 
-Be concise and precise. Do not return the whole dataset — just the insights
+Be concise and precise. Do not return the whole dataset - just the insights
 the user asks for."""
 
     app = agent.to_web(instructions=instruction)

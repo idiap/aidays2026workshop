@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+# SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+# SPDX-License-Identifier: GPL-3.0-only
+
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.15.1
@@ -16,3 +20,12 @@ repos:
       - id: check-case-conflict
       - id: trailing-whitespace
       - id: end-of-file-fixer
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v6.2.0
+    hooks:
+      - id: reuse
+  - repo: https://github.com/wdroz/PurifyLLM
+    rev: v0.1.1
+    hooks:
+    - id: purify-llm
+      exclude: '(^|/)(LICENSES|licenses)/'

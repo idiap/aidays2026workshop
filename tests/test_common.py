@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+# SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+# SPDX-License-Identifier: GPL-3.0-only
+
 """
 Tests for workshop.common utilities.
 
@@ -71,7 +75,7 @@ def test_build_model_with_explicit_provider():
 
 
 # ---------------------------------------------------------------------------
-# Agent integration – just verify it responds
+# Agent integration - just verify it responds
 # ---------------------------------------------------------------------------
 
 
@@ -86,7 +90,7 @@ def test_agent_responds():
 
 
 # ---------------------------------------------------------------------------
-# smolagents – model builder
+# smolagents - model builder
 # ---------------------------------------------------------------------------
 
 
@@ -102,7 +106,7 @@ def test_smolagents_build_model_raises_without_api_key(monkeypatch):
 
 
 # ---------------------------------------------------------------------------
-# smolagents – agent integration
+# smolagents - agent integration
 # ---------------------------------------------------------------------------
 
 

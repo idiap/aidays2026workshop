@@ -1,4 +1,8 @@
-"""Connect Four game with NiceGUI – Player 2 is an LLM agent using structured output."""
+# SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+# SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+# SPDX-License-Identifier: GPL-3.0-only
+
+"""Connect Four game with NiceGUI - Player 2 is an LLM agent using structured output."""
 
 import argparse
 
@@ -157,7 +161,7 @@ async def play_column(col: int) -> None:
         status_text = "It's a draw!"
     else:
         current_player = 2
-        status_text = f"Player 2 ({PLAYER_SYMBOLS[2]}) is thinking…"
+        status_text = f"Player 2 ({PLAYER_SYMBOLS[2]}) is thinking..."
 
     status_label.text = status_text
     board_ui.refresh()
@@ -178,7 +182,7 @@ async def agent_turn() -> None:
 
     row = drop_piece(board, col, 2)
     if row is None:
-        # Agent picked a full column – pick first available as fallback
+        # Agent picked a full column - pick first available as fallback
         for fallback in range(COLS):
             row = drop_piece(board, fallback, 2)
             if row is not None:
