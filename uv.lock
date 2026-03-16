@@ -23,6 +23,56 @@ wheels = [
 ]
 
 [[package]]
+name = "aidays2026workshop"
+version = "1.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "browser-use" },
+    { name = "fastmcp" },
+    { name = "grimoireplot" },
+    { name = "loguru" },
+    { name = "nicegui" },
+    { name = "pandas" },
+    { name = "polars" },
+    { name = "pydantic-ai" },
+    { name = "python-dotenv" },
+    { name = "smolagents", extra = ["toolkit"] },
+]
+
+[package.optional-dependencies]
+scraping = [
+    { name = "playwright" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+]
+docs = [
+    { name = "mkslides" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "browser-use", specifier = "==0.11.13" },
+    { name = "fastmcp", specifier = "~=3.1.0" },
+    { name = "grimoireplot", specifier = "==0.0.2" },
+    { name = "loguru", specifier = "==0.7.3" },
+    { name = "nicegui", specifier = "~=3.8.0" },
+    { name = "pandas", specifier = "~=3.0.1" },
+    { name = "playwright", marker = "extra == 'scraping'", specifier = "~=1.58.0" },
+    { name = "polars", specifier = "~=1.38.1" },
+    { name = "pydantic-ai", specifier = "~=1.61.0" },
+    { name = "python-dotenv", specifier = "~=1.2.2" },
+    { name = "smolagents", extras = ["toolkit"], specifier = "~=1.24.0" },
+]
+provides-extras = ["scraping"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = "~=9.0.2" }]
+docs = [{ name = "mkslides", specifier = "~=2.0.15" }]
+
+[[package]]
 name = "aiodns"
 version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1211,7 +1261,7 @@ wheels = [
 
 [[package]]
 name = "grimoireplot"
-version = "0.0.1"
+version = "0.0.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp", extra = ["speedups"] },
@@ -1222,9 +1272,9 @@ dependencies = [
     { name = "requests" },
     { name = "sqlmodel" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/93/9a/040962b7a0c34c13c0a299829d72630a95b05805c68360eb77978adede84/grimoireplot-0.0.1.tar.gz", hash = "sha256:6cd2f97f8b5838b9389314b5c8d250b1cb275ce4b6a6ebc69b4ac0d2fcf36f34", size = 15908, upload-time = "2026-02-21T08:07:58.482Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0e/46/36e0f70d5415b226db0b7e7e26147ab711c5771f0e423a84ff24edd0400d/grimoireplot-0.0.2.tar.gz", hash = "sha256:011bb855910b35c153f0c87d87fb6c1c36063f0e32ebc31903f1029d46f409a3", size = 16379, upload-time = "2026-03-16T12:11:29.512Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f2/8f/4c2d9ffaddc6304419d38550347b980ae258679415400694ce429bc95433/grimoireplot-0.0.1-py3-none-any.whl", hash = "sha256:d961c936167355df06819b056e2f023e8c31f383b7ea60a1aecc621a54eadc0c", size = 20223, upload-time = "2026-02-21T08:07:56.971Z" },
+    { url = "https://files.pythonhosted.org/packages/71/71/de33209f0593b9cf14ee2a8bc93cabe4b8bb8cf15a70de92549539bb13a4/grimoireplot-0.0.2-py3-none-any.whl", hash = "sha256:f8498f250e0ed9f1125ff6c4fea92dbbf928d476bb4eba1d012a830c7c486fc9", size = 20727, upload-time = "2026-03-16T12:11:28.32Z" },
 ]
 
 [[package]]
@@ -6745,56 +6795,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/b3/8f/705086c9d734d3b66
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e1/07/c6fe3ad3e685340704d314d765b7912993bcb8dc198f0e7a89382d37974b/win32_setctime-1.2.0-py3-none-any.whl", hash = "sha256:95d644c4e708aba81dc3704a116d8cbc974d70b3bdb8be1d150e36be6e9d1390", size = 4083, upload-time = "2024-12-07T15:28:26.465Z" },
 ]
-
-[[package]]
-name = "workshop"
-version = "0.0.1"
-source = { editable = "." }
-dependencies = [
-    { name = "browser-use" },
-    { name = "fastmcp" },
-    { name = "grimoireplot" },
-    { name = "loguru" },
-    { name = "nicegui" },
-    { name = "pandas" },
-    { name = "polars" },
-    { name = "pydantic-ai" },
-    { name = "python-dotenv" },
-    { name = "smolagents", extra = ["toolkit"] },
-]
-
-[package.optional-dependencies]
-scraping = [
-    { name = "playwright" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-]
-docs = [
-    { name = "mkslides" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "browser-use", specifier = "==0.11.13" },
-    { name = "fastmcp", specifier = "~=3.1.0" },
-    { name = "grimoireplot", specifier = "==0.0.1" },
-    { name = "loguru", specifier = "==0.7.3" },
-    { name = "nicegui", specifier = "~=3.8.0" },
-    { name = "pandas", specifier = "~=3.0.1" },
-    { name = "playwright", marker = "extra == 'scraping'", specifier = "~=1.58.0" },
-    { name = "polars", specifier = "~=1.38.1" },
-    { name = "pydantic-ai", specifier = "~=1.61.0" },
-    { name = "python-dotenv", specifier = "~=1.2.2" },
-    { name = "smolagents", extras = ["toolkit"], specifier = "~=1.24.0" },
-]
-provides-extras = ["scraping"]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = "~=9.0.2" }]
-docs = [{ name = "mkslides", specifier = "~=2.0.15" }]
 
 [[package]]
 name = "wrapt"

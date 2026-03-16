@@ -3,20 +3,12 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 """
-Data analysis with MCP - exercise
+Data analysis with MCP - solution
 
 This exercise introduces the Model Context Protocol (MCP).
 Instead of registering tools directly on the agent (like exercise 07),
 the tools live in a FastMCP server and the agent connects to them
 over the MCP stdio transport - all in the same file.
-
-YOUR TASK:
-    The four tool functions below (list_csv_files, get_csv_info,
-    query_csv, create_and_push_plot) are already fully implemented,
-    but they are NOT yet exposed as MCP tools.
-
-    Add the ``@mcp.tool`` decorator to each of them so the MCP server
-    advertises them and the agent can discover and call them at runtime.
 
 Key differences from exercise 07:
 - Tools are defined in a FastMCP server (same file, --serve mode)
@@ -25,10 +17,10 @@ Key differences from exercise 07:
 - This decouples the agent from the tool implementation
 
 Run the web agent (spawns the MCP server as a subprocess):
-    uv run python -m workshop.08_data_analysis_mcp
+    uv run python -m aidays2026workshop.08_data_analysis_mcp_solution
 
 Run as MCP server only (stdio transport, used internally by the agent):
-    uv run python -m workshop.08_data_analysis_mcp --serve
+    uv run python -m aidays2026workshop.08_data_analysis_mcp_solution --serve
 
 Installing as a CLI tool (makes `plot_mcp` available globally):
     uv tool install . -e
@@ -67,6 +59,9 @@ Configuring as an MCP server in VS Code:
     Once configured, VS Code Copilot (or any MCP-aware client) will
     automatically discover the list_csv_files, get_csv_info, query_csv,
     and create_and_push_plot tools.
+
+    Try this prompt in VS Code Copilot Chat:
+      for each csv in dataset/, do 5 relevants plots. use parallel subagents for each csv to speed up the process. Use the csv basename as chapter.
 """
 
 import argparse
@@ -84,7 +79,7 @@ from pydantic import BaseModel
 from pydantic_ai import Agent
 from pydantic_ai.mcp import MCPServerStdio
 
-from workshop.common import pydantic_ai_build_model
+from aidays2026workshop.common import pydantic_ai_build_model
 
 load_dotenv()
 
@@ -144,6 +139,7 @@ class DataQuery(BaseModel):
     limit: Optional[int] = None
 
 
+@mcp.tool
 def list_csv_files() -> list[str]:
     """List all available CSV files in the dataset directory.
 
@@ -153,6 +149,7 @@ def list_csv_files() -> list[str]:
     return [f.name for f in DATASET_DIR.glob("*.csv")]
 
 
+@mcp.tool
 def get_csv_info(filename: str) -> dict:
     """Get metadata and a preview of a CSV file.
 
@@ -175,6 +172,7 @@ def get_csv_info(filename: str) -> dict:
     }
 
 
+@mcp.tool
 def query_csv(query: DataQuery) -> list[dict]:
     """Execute a structured and safe query against a CSV file loaded as a pandas DataFrame.
 
@@ -276,6 +274,7 @@ class PlotRequest(BaseModel):
     plot_name: str = "plot"
 
 
+@mcp.tool
 def create_and_push_plot(request: PlotRequest) -> dict:
     """Create a plotly express chart from a CSV dataset and push it to the grimoire server for visualization.
 
@@ -380,7 +379,7 @@ def create_and_push_plot(request: PlotRequest) -> dict:
 def build_agent() -> Agent:
     server = MCPServerStdio(
         sys.executable,
-        args=["-m", "workshop.08_data_analysis_mcp", "--serve"],
+        args=["-m", "aidays2026workshop.08_data_analysis_mcp_solution", "--serve"],
     )
 
     model = pydantic_ai_build_model()

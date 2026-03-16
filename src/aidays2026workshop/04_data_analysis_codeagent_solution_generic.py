@@ -9,7 +9,7 @@ Data analysis with CodeAgent - solution
 from pathlib import Path
 from dotenv import load_dotenv
 from smolagents import CodeAgent
-from workshop.common import smolagents_build_model
+from aidays2026workshop.common import smolagents_build_model
 
 load_dotenv()
 

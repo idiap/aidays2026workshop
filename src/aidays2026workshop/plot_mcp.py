@@ -6,5 +6,5 @@
 
 import importlib
 
-_mod = importlib.import_module("workshop.08_data_analysis_mcp_solution")
+_mod = importlib.import_module("aidays2026workshop.08_data_analysis_mcp_solution")
 main = _mod.main

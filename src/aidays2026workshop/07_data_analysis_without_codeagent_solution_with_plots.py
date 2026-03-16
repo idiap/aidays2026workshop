@@ -13,7 +13,7 @@ import pandas as pd
 import plotly.express as px
 import uvicorn
 
-from workshop.common import pydantic_ai_build_model
+from aidays2026workshop.common import pydantic_ai_build_model
 from grimoireplot.client import push_plot_sync
 
 from typing import List, Optional, Literal

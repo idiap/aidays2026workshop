@@ -2,16 +2,40 @@
 # SPDX-FileContributor: William Droz <william.droz@idiap.ch>
 # SPDX-License-Identifier: GPL-3.0-only
 
-"""Connect Four game with NiceGUI - Player 2 is an LLM agent using structured output."""
+"""
+Connect Four game with NiceGUI - Player 2 is an LLM agent using structured output.
+
+## Why structured output?
+
+When an LLM returns free-form text, you need fragile parsing to extract
+usable data (e.g. "I'll play column 3" → parse the int 3).
+With **structured output**, you define a Pydantic model and the LLM is
+constrained to return valid JSON matching that schema - no parsing needed.
+
+Pydantic AI supports this via the `output_type` parameter:
+  https://ai.pydantic.dev/output/
+
+## Goal of this exercise
+
+1. Define a `ConnectFourMove` Pydantic model whose single field `column`
+   is a constrained integer (0-6) with a description.
+   → See https://docs.pydantic.dev/latest/concepts/fields/
+2. Update the agent result access to use the model attribute instead of
+   converting a raw string.
+
+Once done, run the game:
+   uv run python -m aidays2026workshop.02_connect_4_structured_output
+Then open http://localhost:1234 in your browser and play!
+"""
 
 import argparse
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field  # noqa: F401 - you'll need BaseModel & Field
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 from nicegui import ui
 
-from workshop.common import (
+from aidays2026workshop.common import (
     pydantic_ai_build_model,
     pydantic_ai_build_high_reasoning_settings,
 )
@@ -27,10 +51,25 @@ BG_COLOR = "#1e3a5f"
 
 
 # ── Structured output for the agent ────────────────────────
-class ConnectFourMove(BaseModel):
-    column: int = Field(
-        ge=0, le=COLS - 1, description="Column index (0-6) to drop the piece"
-    )
+#
+# TODO 1/2 - Define a Pydantic model for the agent's move
+#
+#   Right now `ConnectFourMove` is just `str`, so the agent returns plain text
+#   and we have to do `int(result.output)` later - fragile!
+#
+#   Replace the line `ConnectFourMove = str` with a proper Pydantic model:
+#
+#     class ConnectFourMove(BaseModel):
+#         column: int = Field(..., ge=0, le=6, description="Column index (0-6) to drop the piece")
+#
+#   Key concepts:
+#     • `BaseModel` - base class for all Pydantic models
+#     • `Field(ge=0, le=6)` - constrains the int to [0, 6]
+#     • `description=...` - tells the LLM what this field means
+#
+#   Docs: https://docs.pydantic.dev/latest/concepts/fields/
+#
+ConnectFourMove = str  # ← Replace this with your Pydantic model
 
 
 def build_agent(high_reasoning: bool = False) -> Agent[None, ConnectFourMove]:
@@ -178,7 +217,15 @@ async def agent_turn() -> None:
 
     board_str = board_to_string(board)
     result = await agent.run(f"Current board:\n{board_str}")
-    col = result.output.column
+    # TODO 2/2 - Access the structured output
+    #
+    #   Once ConnectFourMove is a Pydantic model, `result.output` is a
+    #   ConnectFourMove instance (not a string). Access the column with:
+    #
+    #     col = result.output.column
+    #
+    #   For now it's a raw string, so we do int(...):
+    col = int(result.output)  # ← Change to: result.output.column
 
     row = drop_piece(board, col, 2)
     if row is None:

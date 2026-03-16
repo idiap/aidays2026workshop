@@ -3,38 +3,21 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 from fastmcp import FastMCP
-from pydantic import BaseModel
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 
+from aidays2026workshop.common import pydantic_ai_build_model
 from pydantic_ai.mcp import MCPServerStreamableHTTP
 
-from browser_use import Agent as BrowserUseAgent, ChatOpenAI
-
+from aidays2026workshop.scraping.get_products import (
+    load_categories,
+    build_filtered_url,
+    scrape_products,
+)
 import argparse
-import os
 import uvicorn
 
-from workshop.common import pydantic_ai_build_model
-
 load_dotenv()
-
-
-#  TODO define the output model
-class BrowserResult(BaseModel): ...
-
-
-def _build_browser_use_llm() -> ChatOpenAI:
-    """Build a ChatOpenAI instance for browser-use from env vars."""
-    api_key = os.getenv("LLM_API_KEY")
-    if not api_key:
-        raise ValueError("LLM_API_KEY environment variable is not set")
-    model_name = os.getenv("LLM_MODEL_NAME", "gpt-5.2")
-    base_url = os.getenv("LLM_BASE_URL")
-    kwargs: dict = {"model": model_name, "api_key": api_key}
-    if base_url:
-        kwargs["base_url"] = base_url
-    return ChatOpenAI(**kwargs)
 
 
 def build_agent() -> Agent:
@@ -49,31 +32,41 @@ def run_mcp_server(host: str = "0.0.0.0", port: int = 8000):
     mcp = FastMCP("My MCP Server for AI Days 2026 Workshop")
 
     @mcp.tool
-    async def browser_use(task: str) -> BrowserResult | str:
-        """Use a browser automation agent to perform a task on the web.
+    def load_categories_wrapper() -> dict:
+        """Load available product categories and their filters from the categories file."""
+        return load_categories()
 
-        The task should describe what you want the browser agent to do,
-        including any URLs to visit and actions to perform.
+    @mcp.tool
+    def build_filtered_url_wrapper(
+        product_name: str, filter_name: str, filter_value: str
+    ) -> str:
+        """Build a Digitec filtered URL for a product with a given filter name and value."""
+        categories = load_categories()
+        filters = [f"{filter_name}={filter_value}"]
+        return build_filtered_url(categories, product_name, filters)
+
+    @mcp.tool
+    def add_price_filter(url: str, min_price: int, max_price: int) -> str:
+        """Add a price range filter to a Digitec product URL.
 
         Args:
-            task: A natural language description of the browser task to perform.
+            url: The Digitec product URL (with or without existing filters).
+            min_price: Minimum price in CHF.
+            max_price: Maximum price in CHF.
 
         Returns:
-            The final result extracted by the browser agent.
+            The URL with the price filter appended.
         """
-        llm = _build_browser_use_llm()
-        agent = BrowserUseAgent(
-            task=task,
-            llm=llm,
-            use_thinking=False,
-            output_model_schema=BrowserResult,
-        )
-        history = await agent.run()
-        result = history.final_result()
-        if result:
-            parsed = BrowserResult.model_validate_json(result)
-            return parsed
-        return "Browser task completed but no content was extracted."
+        price_param = f"pr%3D{min_price}%3A{max_price}"
+        if "?filter=" in url:
+            return f"{url}%2C{price_param}"
+        else:
+            return f"{url}?filter={price_param}"
+
+    @mcp.tool
+    async def scrape_products_wrapper(url: str, top_n: int = 10) -> list[dict]:
+        """Scrape product links from a Digitec product page URL."""
+        return await scrape_products(url, top_n, headless=False)
 
     mcp.run(transport="http", host=host, port=port)
 

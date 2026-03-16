@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 """
-Tests for workshop.common utilities.
+Tests for aidays2026workshop.common utilities.
 
 These tests use the real environment variables (LLM_BASE_URL, LLM_API_KEY, etc.)
 as configured by the user. They verify that the setup works and that an agent
@@ -16,7 +16,7 @@ from pydantic_ai.models.openai import OpenAIChatModel, OpenAIResponsesModel
 from pydantic_ai.providers.openai import OpenAIProvider
 from smolagents import CodeAgent, OpenAIModel
 
-from workshop.common import (
+from aidays2026workshop.common import (
     pydantic_ai_build_provider_openai,
     pydantic_ai_build_model_openai_chat,
     pydantic_ai_build_model_openai_responses,

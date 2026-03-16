@@ -9,7 +9,7 @@ How to make your first agent with pydantic - solution
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 
-from workshop.common import pydantic_ai_build_model
+from aidays2026workshop.common import pydantic_ai_build_model
 
 load_dotenv()
 

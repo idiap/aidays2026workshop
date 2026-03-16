@@ -6,10 +6,10 @@ from fastmcp import FastMCP
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 
-from workshop.common import pydantic_ai_build_model
+from aidays2026workshop.common import pydantic_ai_build_model
 from pydantic_ai.mcp import MCPServerStreamableHTTP
 
-from workshop.scraping.get_products import (
+from aidays2026workshop.scraping.get_products import (
     load_categories,
     build_filtered_url,
     scrape_products,  # noqa: F401

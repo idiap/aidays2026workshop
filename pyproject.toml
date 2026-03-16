@@ -47,4 +47,4 @@ docs = [
 testpaths = ["tests"]
 
 [project.scripts]
-plot_mcp = "workshop.plot_mcp:main"
+plot_mcp = "aidays2026workshop.plot_mcp:main"

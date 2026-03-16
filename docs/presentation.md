@@ -108,7 +108,7 @@ requires = ["uv_build>=0.10.2,<0.11.0"]
 build-backend = "uv_build"
 
 [project]
-name = "workshop"
+name = "aidays2026workshop"
 version = "0.0.1"
 description = "AI Days 2026 Workshop - First step with Agents"
 readme = "README.md"
@@ -163,10 +163,10 @@ An **agent** is a program that uses an LLM as its reasoning engine to **decide**
 - Use environment variables for configuration (`LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL_NAME`)
 - Run the agent and ask it a question
 
-File: `src/workshop/01_first_agent.py`
+File: `src/aidays2026workshop/01_first_agent.py`
 
 ```bash
-uv run python -m workshop.01_first_agent
+uv run python -m aidays2026workshop.01_first_agent
 ```
 
 ---
@@ -207,10 +207,10 @@ print(result.output)  # CityInfo(name='Martigny', country='Switzerland', populat
 - The agent returns valid JSON matching the schema - no parsing needed
 - Play Connect Four against an LLM in the browser!
 
-File: `src/workshop/02_connect_4_structured_output.py`
+File: `src/aidays2026workshop/02_connect_4_structured_output.py`
 
 ```bash
-uv run python -m workshop.02_connect_4_structured_output
+uv run python -m aidays2026workshop.02_connect_4_structured_output
 ```
 
 ---
@@ -224,10 +224,10 @@ uv run python -m workshop.02_connect_4_structured_output
 - Try asking for the average number of voters
 - Tip: you can use `instructions` (system prompt) with `agent.run_sync`
 
-File: `src/workshop/03_naive_data_analysis.py`
+File: `src/aidays2026workshop/03_naive_data_analysis.py`
 
 ```bash
-uv run python -m workshop.03_naive_data_analysis
+uv run python -m aidays2026workshop.03_naive_data_analysis
 ```
 
 ---
@@ -265,10 +265,10 @@ Pydantic is also exploring code agents with **[Monty](https://github.com/pydanti
 - The agent can write Python code using pandas or polars
 - Build a prompt that provides the dataset path and the user question
 
-File: `src/workshop/04_data_analysis_codeagent.py`
+File: `src/aidays2026workshop/04_data_analysis_codeagent.py`
 
 ```bash
-uv run python -m workshop.04_data_analysis_codeagent
+uv run python -m aidays2026workshop.04_data_analysis_codeagent
 ```
 
 ---
@@ -281,11 +281,11 @@ uv run python -m workshop.04_data_analysis_codeagent
 - How do you explain to the model how to use `push_plot_sync`?
 - Run `uv run grimoireplot serve` first, then browse to `http://localhost:8080`
 
-File: `src/workshop/05_data_analysis_codeagent_plots.py`
+File: `src/aidays2026workshop/05_data_analysis_codeagent_plots.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m workshop.05_data_analysis_codeagent_plots
+uv run python -m aidays2026workshop.05_data_analysis_codeagent_plots
 ```
 
 ---
@@ -298,11 +298,11 @@ uv run python -m workshop.05_data_analysis_codeagent_plots
 - Add the tool to the `CodeAgent`
 - Docs: https://huggingface.co/docs/smolagents/en/guided_tour#tools
 
-File: `src/workshop/06_data_analysis_codeagent_plot_with_tools.py`
+File: `src/aidays2026workshop/06_data_analysis_codeagent_plot_with_tools.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m workshop.06_data_analysis_codeagent_plot_with_tools
+uv run python -m aidays2026workshop.06_data_analysis_codeagent_plot_with_tools
 ```
 
 ---
@@ -316,10 +316,10 @@ uv run python -m workshop.06_data_analysis_codeagent_plot_with_tools
 - The agent translates natural language into structured queries
 - Expose as a web app with `agent.to_web()`
 
-File: `src/workshop/07_data_analysis_without_codeagent.py`
+File: `src/aidays2026workshop/07_data_analysis_without_codeagent.py`
 
 ```bash
-uv run python -m workshop.07_data_analysis_without_codeagent
+uv run python -m aidays2026workshop.07_data_analysis_without_codeagent
 ```
 
 ---
@@ -355,11 +355,11 @@ MCP reduces this to **M + N** - one protocol both sides implement.
 - The agent discovers and calls the tools at runtime over MCP (stdio transport)
 - Functions to expose: `list_csv_files`, `get_csv_info`, `query_csv`, `create_and_push_plot`
 
-File: `src/workshop/08_data_analysis_mcp.py`
+File: `src/aidays2026workshop/08_data_analysis_mcp.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m workshop.08_data_analysis_mcp
+uv run python -m aidays2026workshop.08_data_analysis_mcp
 ```
 
 ---
@@ -397,11 +397,11 @@ The parent **plans and delegates**; each subagent runs independently, then retur
 - Run the MCP server first (`--server`), then the agent in a separate terminal
 - The agent connects over **Streamable HTTP** and discovers tools at runtime
 
-File: `src/workshop/11_search_product_mcp.py`
+File: `src/aidays2026workshop/11_search_product_mcp.py`
 
 ```bash
-uv run src/workshop/11_search_product_mcp.py --server   # terminal 1
-uv run src/workshop/11_search_product_mcp.py            # terminal 2
+uv run src/aidays2026workshop/11_search_product_mcp.py --server   # terminal 1
+uv run src/aidays2026workshop/11_search_product_mcp.py            # terminal 2
 ```
 
 ---
@@ -441,11 +441,11 @@ Agent prompt → browser-use Agent → Chromium (via Playwright) → structured 
 - Run the MCP server first (`--server`), then the agent in a separate terminal
 - Try asking: *"What is the cheapest RTX 5090 on digitec.ch?"*
 
-File: `src/workshop/12_search_product_browser_use.py`
+File: `src/aidays2026workshop/12_search_product_browser_use.py`
 
 ```bash
-uv run src/workshop/12_search_product_browser_use.py --server   # terminal 1
-uv run src/workshop/12_search_product_browser_use.py            # terminal 2
+uv run src/aidays2026workshop/12_search_product_browser_use.py --server   # terminal 1
+uv run src/aidays2026workshop/12_search_product_browser_use.py            # terminal 2
 ```
 
 ---

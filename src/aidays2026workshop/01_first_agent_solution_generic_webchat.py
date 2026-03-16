@@ -10,7 +10,7 @@ from pydantic_ai import Agent
 from dotenv import load_dotenv
 import uvicorn
 
-from workshop.common import pydantic_ai_build_model
+from aidays2026workshop.common import pydantic_ai_build_model
 
 load_dotenv()
 
