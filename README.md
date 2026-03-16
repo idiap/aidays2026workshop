@@ -94,6 +94,24 @@ uv run playwright install
 | 11 | **Product search MCP** - build an MCP server to search & filter Digitec products | `src/aidays2026workshop/11_search_product_mcp.py` | `uv run src/aidays2026workshop/11_search_product_mcp.py --server` (terminal 1) then `uv run src/aidays2026workshop/11_search_product_mcp.py` (terminal 2) |
 | 12 | **Browser-use MCP** - wrap browser-use in an MCP tool for web automation | `src/aidays2026workshop/12_search_product_browser_use.py` | `uv run src/aidays2026workshop/12_search_product_browser_use.py --server` (terminal 1) then `uv run src/aidays2026workshop/12_search_product_browser_use.py` (terminal 2) |
 
+## Bonus - MCP Apps Data Analysis
+
+### Install dependencies
+
+The bonus exercises require additional dependencies. Install them with the `bonus` extra:
+
+```bash
+uv sync --extra bonus
+```
+
+### Exercises
+
+| # | Topic | File | Run command |
+|---|---|---|---|
+| 21 | **MCP Apps charts** - render AreaChart / BarChart inline via MCP Apps (prefab_ui) | `src/aidays2026workshop/21_bonus_mcps_app_data_analysis.py` | `uv run python -m aidays2026workshop.21_bonus_mcps_app_data_analysis` |
+
+You can also register it as an MCP server in VS Code (`.vscode/mcp.json`) to use it directly from Copilot Chat - see the slides for details.
+
 ## For Developers
 
 Install all optional dependencies:

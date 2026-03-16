@@ -474,7 +474,7 @@ def create_chart(request: ChartRequest) -> PrefabApp:
     return PrefabApp(view=view)
 ```
 
-File: `src/aidays2026workshop/21_bonus_mcps_app_data_analysis_solution.py`
+File: `src/aidays2026workshop/21_bonus_mcps_app_data_analysis.py`
 
 ---
 
