@@ -11,35 +11,35 @@ name = "workshop"
 version = "0.0.1"
 description = "AI Days 2026 Workshop - First step with Agents"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 authors = [
     { name = "William Droz", email = "william.droz@idiap.ch" },
 ]
 
 dependencies = [
-    "browser-use>=0.5.9",
-    "fastmcp>=2.14.5",
-    "grimoireplot",
-    "loguru>=0.7.3",
-    "nicegui>=3.7.1",
-    "pandas>=3.0.0",
-    "polars>=1.38.1",
-    "pydantic-ai>=1.59.0",
-    "python-dotenv>=1.2.1",
-    "smolagents[toolkit]>=1.24.0",
+    "browser-use==0.11.13",
+    "fastmcp~=3.1.0",
+    "grimoireplot==0.0.1",
+    "loguru==0.7.3",
+    "nicegui~=3.8.0",
+    "pandas~=3.0.1",
+    "polars~=1.38.1",
+    "pydantic-ai~=1.61.0",
+    "python-dotenv~=1.2.2",
+    "smolagents[toolkit]~=1.24.0",
 ]
 
 [project.optional-dependencies]
 scraping = [
-    "playwright>=1.58.0",
+    "playwright~=1.58.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=9.0.2",
+    "pytest~=9.0.2",
 ]
 docs = [
-    "mkslides>=2.0.0",
+    "mkslides~=2.0.15",
 ]
 
 

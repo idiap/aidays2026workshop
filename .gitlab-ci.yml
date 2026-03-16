@@ -22,7 +22,7 @@ default:
 site:
   stage: build
   image:
-    name: python:3.12-slim
+    name: python:3.13-slim
   script:
     - pip install mkslides
     - mkslides build docs
