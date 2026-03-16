@@ -43,12 +43,12 @@ SPDX-License-Identifier = "GPL-3.0-only"
 [[annotations]]
 path = "dataset/cs_students.csv"
 precedence = "override"
-SPDX-FileCopyrightText = "Zahra Nusrat from Kaggle"
+SPDX-FileCopyrightText = "Zahra Nusrat <https://www.kaggle.com/zahranusratt>"
 SPDX-License-Identifier = "CC0-1.0"
 
 
 [[annotations]]
 path = "dataset/voting.csv"
 precedence = "override"
-SPDX-FileCopyrightText = "Vasco from Kaggle"
+SPDX-FileCopyrightText = "Vasco <https://www.kaggle.com/vascos>"
 SPDX-License-Identifier = "MIT"
