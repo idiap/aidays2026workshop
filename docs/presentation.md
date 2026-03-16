@@ -65,7 +65,7 @@ SPDX-License-Identifier: GPL-3.0-only
 
 # Workshop git
 
-TODO add github link and github pages for slides
+<https://github.com/idiap/aidays2026workshop>
 
 If you want to keep/commit your solution, *fork* the repo.
 
