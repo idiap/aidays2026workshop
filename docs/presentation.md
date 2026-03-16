@@ -1,9 +1,3 @@
-<!--
-SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
-SPDX-FileContributor: William Droz <william.droz@idiap.ch>
-SPDX-License-Identifier: GPL-3.0-only
--->
-
 ---
 slides:
     theme: solarized
@@ -15,6 +9,13 @@ plugins:
     - extra_css:
         - custom.css
 ---
+
+<!--
+SPDX-FileCopyrightText: Copyright © 2026 Idiap Research Institute <contact@idiap.ch>
+SPDX-FileContributor: William Droz <william.droz@idiap.ch>
+SPDX-License-Identifier: GPL-3.0-only
+-->
+
 
 # Workshop
 
@@ -447,6 +448,60 @@ File: `src/aidays2026workshop/12_search_product_browser_use.py`
 uv run src/aidays2026workshop/12_search_product_browser_use.py --server   # terminal 1
 uv run src/aidays2026workshop/12_search_product_browser_use.py            # terminal 2
 ```
+
+---
+
+# Bonus - MCP Apps with prefab_ui
+
+**Render charts directly inside VS Code Copilot using MCP Apps**
+
+Instead of pushing plots to an external server, tools return a `PrefabApp` that the client renders inline.
+
+```python
+# Omitted import
+mcp = FastMCP("CSV Data Analysis Server (MCP Apps)")
+
+@mcp.tool
+def create_chart(request: ChartRequest) -> PrefabApp:
+    #  data = ... record-like datastructure
+    chart_cls = {"area": AreaChart, "bar": BarChart}[request.chart_type]
+    view = chart_cls(
+        data=data,
+        series=[ChartSeries(data_key=s.data_key, label=s.label) for s in request.series],
+        x_axis=request.x_axis,
+        show_legend=True,
+    )
+    return PrefabApp(view=view)
+```
+
+File: `src/aidays2026workshop/21_bonus_mcps_app_data_analysis_solution.py`
+
+---
+
+# Bonus - Integrating in VS Code
+
+Add the following to your VS Code MCP config (`.vscode/mcp.json`):
+
+```json
+{
+    "servers": {
+        "plot_mcp_app": {
+            "type": "stdio",
+            "command": "uv",
+            "args": [
+                "run",
+                "plot_mcp_app",
+                "--serve"
+            ]
+        }
+    },
+    "inputs": []
+}
+```
+
+Then ask Copilot: *"List the CSV files, analyze voting.csv and create a bar chart of participation by kind"*
+
+VS Code discovers `list_csv_files`, `get_csv_info`, `query_csv`, and `create_chart` tools automatically - and renders the chart **inline** in the chat.
 
 ---
 

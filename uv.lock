@@ -40,6 +40,10 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
+bonus = [
+    { name = "fastmcp", extra = ["apps"] },
+    { name = "prefab-ui" },
+]
 scraping = [
     { name = "playwright" },
 ]
@@ -56,17 +60,19 @@ docs = [
 requires-dist = [
     { name = "browser-use", specifier = "==0.11.13" },
     { name = "fastmcp", specifier = "~=3.1.0" },
+    { name = "fastmcp", extras = ["apps"], marker = "extra == 'bonus'", specifier = "~=3.1.0" },
     { name = "grimoireplot", specifier = "==0.0.2" },
     { name = "loguru", specifier = "==0.7.3" },
     { name = "nicegui", specifier = "~=3.8.0" },
     { name = "pandas", specifier = "~=3.0.1" },
     { name = "playwright", marker = "extra == 'scraping'", specifier = "~=1.58.0" },
     { name = "polars", specifier = "~=1.38.1" },
+    { name = "prefab-ui", marker = "extra == 'bonus'", specifier = "==0.11.2" },
     { name = "pydantic-ai", specifier = "~=1.61.0" },
     { name = "python-dotenv", specifier = "~=1.2.2" },
     { name = "smolagents", extras = ["toolkit"], specifier = "~=1.24.0" },
 ]
-provides-extras = ["scraping"]
+provides-extras = ["scraping", "bonus"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = "~=9.0.2" }]
@@ -978,6 +984,11 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/25/83/c95d3bf717698a693eccb43e137a32939d2549876e884e246028bff6ecce/fastmcp-3.1.1.tar.gz", hash = "sha256:db184b5391a31199323766a3abf3a8bfbb8010479f77eca84c0e554f18655c48", size = 17347644, upload-time = "2026-03-14T19:12:20.235Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/70/ea/570122de7e24f72138d006f799768e14cc1ccf7fcb22b7750b2bd276c711/fastmcp-3.1.1-py3-none-any.whl", hash = "sha256:8132ba069d89f14566b3266919d6d72e2ec23dd45d8944622dca407e9beda7eb", size = 633754, upload-time = "2026-03-14T19:12:22.736Z" },
+]
+
+[package.optional-dependencies]
+apps = [
+    { name = "prefab-ui" },
 ]
 
 [[package]]
@@ -2657,6 +2668,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/1c/a7/2865487853061fbd62383492237b546d2d8f7c1846272350d2b9e14138cd/posthog-7.9.12.tar.gz", hash = "sha256:ebabf2eb2e1c1fbf22b0759df4644623fa43cc6c9dcbe9fd429b7937d14251ec", size = 176828, upload-time = "2026-03-12T09:01:15.184Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/65/a9/7a803aed5a5649cf78ea7b31e90d0080181ba21f739243e1741a1e607f1f/posthog-7.9.12-py3-none-any.whl", hash = "sha256:7175bd1698a566bfea98a016c64e3456399f8046aeeca8f1d04ae5bf6c5a38d0", size = 202469, upload-time = "2026-03-12T09:01:13.38Z" },
+]
+
+[[package]]
+name = "prefab-ui"
+version = "0.11.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "cyclopts" },
+    { name = "pydantic" },
+    { name = "rich" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/de/b4/2b90754a66f96711b8023158e47037a9fa99ecd98e0f7dbdff1cd67f7bcc/prefab_ui-0.11.2.tar.gz", hash = "sha256:3295d154b97ab570885ee5fb356252708a279d448adadc3a7be1f01317b94fdd", size = 2923681, upload-time = "2026-03-14T15:51:20.527Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/31/1c/c8587d93090c33d3ec3de10a3641aab100c23854d25cdba2e4be438f1a49/prefab_ui-0.11.2-py3-none-any.whl", hash = "sha256:70731df7c4bd02c9d09c23aca2c6577d88e68c9e59469ee570af0935bd8a2073", size = 872953, upload-time = "2026-03-14T15:51:19.006Z" },
 ]
 
 [[package]]

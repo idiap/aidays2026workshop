@@ -33,6 +33,10 @@ dependencies = [
 scraping = [
     "playwright~=1.58.0",
 ]
+bonus = [
+    "fastmcp[apps]~=3.1.0",
+    "prefab-ui==0.11.2",
+]
 
 [dependency-groups]
 dev = [
@@ -48,3 +52,4 @@ testpaths = ["tests"]
 
 [project.scripts]
 plot_mcp = "aidays2026workshop.plot_mcp:main"
+plot_mcp_app = "aidays2026workshop.plot_mcp_app:main"
