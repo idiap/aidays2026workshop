@@ -1,6 +1,6 @@
 # AI Days 2026 Workshop - Getting Started with AI Agents in Python
 
-The slides are available [here](https://wdroz.pages.idiap.ch/aidays2026workshop).
+The slides are available [here](https://idiap.github.io/aidays2026workshop).
 
 ## Learning Objectives
 
