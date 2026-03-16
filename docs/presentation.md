@@ -107,7 +107,6 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 [build-system]
 requires = ["uv_build>=0.10.2,<0.11.0"]
 build-backend = "uv_build"
-
 [project]
 name = "aidays2026workshop"
 version = "0.0.1"
@@ -117,7 +116,6 @@ requires-python = ">=3.12"
 authors = [
     { name = "William Droz", email = "william.droz@idiap.ch" },
 ]
-
 dependencies = [
     "pydantic-ai[web]>=1.59.0",
 ]
