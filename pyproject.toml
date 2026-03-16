@@ -7,8 +7,8 @@ requires = ["uv_build>=0.10.2,<0.11.0"]
 build-backend = "uv_build"
 
 [project]
-name = "workshop"
-version = "0.0.1"
+name = "aidays2026workshop"
+version = "1.0.0"
 description = "AI Days 2026 Workshop - First step with Agents"
 readme = "README.md"
 requires-python = ">=3.13"
