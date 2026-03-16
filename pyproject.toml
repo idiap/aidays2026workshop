@@ -46,8 +46,5 @@ docs = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
-[tool.uv.sources]
-grimoireplot = { git = "ssh://git@gitlab.idiap.ch/wdroz/grimoireplot" }
-
 [project.scripts]
 plot_mcp = "workshop.plot_mcp:main"
