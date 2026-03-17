@@ -390,6 +390,27 @@ The parent **plans and delegates**; each subagent runs independently, then retur
 
 ---
 
+# Second part of the workshop (1/2)
+
+Sometimes you want to interface with existing website/intranet.
+
+MCPs can help in this regard as we can use external web content as a database.
+
+---
+
+# Second part of the workshop (2/2)
+
+Sometimes some website are quite hostile to be used by agents/bots.
+
+Fortunately, it's still possible to extract usable MCPs by using browser-based automation.
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_scraping_compressed.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # Exercise 11 - Search products with MCP
 
 **Build an MCP server that lets an agent search & filter Digitec products**
