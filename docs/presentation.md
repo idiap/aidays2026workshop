@@ -301,11 +301,11 @@ uv run python -m aidays2026workshop.05_data_analysis_codeagent_plots
 - Add the tool to the `CodeAgent`
 - Docs: https://huggingface.co/docs/smolagents/en/guided_tour#tools
 
-File: `src/aidays2026workshop/06_data_analysis_codeagent_plot_with_tools.py`
+File: `src/aidays2026workshop/06_data_analysis_codeagent_plots_with_tools.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m aidays2026workshop.06_data_analysis_codeagent_plot_with_tools
+uv run python -m aidays2026workshop.06_data_analysis_codeagent_plots_with_tools
 ```
 
 ---

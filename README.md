@@ -67,7 +67,7 @@ uv sync
 | 03 | **Naive data analysis** - pass raw CSV data to the LLM | `src/aidays2026workshop/03_naive_data_analysis.py` | `uv run python -m aidays2026workshop.03_naive_data_analysis` |
 | 04 | **CodeAgent** - let smolagents write & execute pandas/polars code | `src/aidays2026workshop/04_data_analysis_codeagent.py` | `uv run python -m aidays2026workshop.04_data_analysis_codeagent` |
 | 05 | **CodeAgent + plots** - generate plotly plots via grimoireplot | `src/aidays2026workshop/05_data_analysis_codeagent_plots.py` | `uv run grimoireplot serve` then `uv run python -m aidays2026workshop.05_data_analysis_codeagent_plots` |
-| 06 | **CodeAgent + tools** - expose `push_plot_sync` as a smolagents tool | `src/aidays2026workshop/06_data_analysis_codeagent_plot_with_tools.py` | `uv run grimoireplot serve` then `uv run python -m aidays2026workshop.06_data_analysis_codeagent_plot_with_tools` |
+| 06 | **CodeAgent + tools** - expose `push_plot_sync` as a smolagents tool | `src/aidays2026workshop/06_data_analysis_codeagent_plots_with_tools.py` | `uv run grimoireplot serve` then `uv run python -m aidays2026workshop.06_data_analysis_codeagent_plots_with_tools` |
 | 07 | **Safe data analysis** - structured queries instead of code execution | `src/aidays2026workshop/07_data_analysis_without_codeagent.py` | `uv run python -m aidays2026workshop.07_data_analysis_without_codeagent` |
 | 08 | **MCP data analysis** - expose tools via FastMCP (stdio transport) | `src/aidays2026workshop/08_data_analysis_mcp.py` | `uv run grimoireplot serve` then `uv run python -m aidays2026workshop.08_data_analysis_mcp` |
 
