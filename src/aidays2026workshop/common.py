@@ -94,6 +94,9 @@ def pydantic_ai_build_high_reasoning_settings() -> OpenAIResponsesModelSettings:
     """
     Build OpenAIResponsesModelSettings with high reasoning effort and detailed summary.
     """
+    logger.info(
+        "Building OpenAIResponsesModelSettings with high reasoning effort and detailed summary"
+    )
     return OpenAIResponsesModelSettings(
         openai_reasoning_effort="high",
         openai_reasoning_summary="detailed",
@@ -107,6 +110,7 @@ def pydantic_ai_build_model_with_high_reasoning(
     Build a model with high reasoning effort settings.
     Returns a tuple of (model, settings) ready to pass to Agent.
     """
+    logger.info("Building model with high reasoning effort settings")
     model = pydantic_ai_build_model(provider)
     settings = pydantic_ai_build_high_reasoning_settings()
     return model, settings
