@@ -7,14 +7,19 @@
         "values": {
           "AMD B850": "5071372",
           "Intel B760": "1240786",
-          "Intel Z890": "",
+          "Intel Z890": "3861313",
           "AMD B650": "1060071",
           "Intel B860": "5527193",
           "AMD B550": "572447",
-          "Intel H610": "881470",
           "AMD X870E": "3837531",
+          "Intel H610": "881470",
           "AMD X870": "3837530",
-          "AMD A620": "1296060"
+          "AMD A620": "1296060",
+          "Intel Z790": "1060070",
+          "AMD A520": "656191",
+          "AMD SoC": "561347",
+          "Intel B760 Express": "1237512",
+          "AMD B840": "5527194"
         }
       },
       "Socket": {
@@ -25,11 +30,16 @@
           "LGA 1851": "3801579",
           "AM4": "332514",
           "LGA 1200": "558386",
-          "SP5": "1299302",
           "LGA 4677": "859401",
-          "LGA 1151": "278729",
+          "SP5": "1299302",
+          "SP3": "414445",
           "sTR5": "1555396",
-          "LGA 2066": "353496"
+          "LGA 1151": "278729",
+          "LGA 2066": "353496",
+          "Prise P": "378016",
+          "Prise S1": "844545",
+          "SP6": "1437307",
+          "LGA 4189": "739617"
         }
       },
       "Type de mémoire vive": {
@@ -38,8 +48,28 @@
           "RAM DDR5": "804383",
           "RAM DDR4": "8135",
           "RAM DDR3": "1160",
-          "DDR-RAM": "1158",
+          "RAM DDR": "1158",
           "RAM LPDDR3": "200612"
+        }
+      },
+      "Marque": {
+        "category_id": "bra",
+        "values": {
+          "ASUS": "1",
+          "Gigabyte": "4",
+          "AsRock": "56",
+          "MSI": "331",
+          "Supermicro": "990",
+          "Biostar": "82",
+          "Maxsun": "178327",
+          "NZXT": "359",
+          "Sapphire": "426",
+          "Renkforce": "45623",
+          "Fujitsu": "191",
+          "HP": "8",
+          "Intel": "9",
+          "Dell": "5288",
+          "Joy-it": "45449"
         }
       }
     }
@@ -52,14 +82,39 @@
         "values": {
           "GeForce RTX 5060 Ti": "7113016",
           "GeForce RTX 5060": "7113015",
-          "GeForce RTX 5070": "5147910",
           "GeForce RTX 5080": "5147912",
+          "GeForce RTX 5070": "5147910",
           "GeForce RTX 5070 Ti": "5147911",
           "Radeon RX 9070 XT": "6291910",
           "Radeon RX 9060 XT": "7709265",
-          "GeForce RTX 3050": "709324",
           "GeForce RTX 5090": "5147913",
-          "GeForce RTX 5050": "7517479"
+          "GeForce RTX 3050": "709324",
+          "GeForce RTX 5050": "7517479",
+          "Radeon RX 9070": "6338895",
+          "GeForce RTX 4060": "1303116",
+          "GeForce RTX 3060": "677785",
+          "GeForce RTX 3080": "651564",
+          "Quadro T1000": "498319"
+        }
+      },
+      "Marque": {
+        "category_id": "bra",
+        "values": {
+          "ASUS": "1",
+          "Gigabyte": "4",
+          "PNY": "385",
+          "MSI": "331",
+          "Zotac": "579",
+          "NVIDIA": "358",
+          "Inno3D": "20339",
+          "HP": "8",
+          "Lenovo": "5",
+          "XFX": "556",
+          "AsRock": "56",
+          "Gainward": "197",
+          "Sapphire": "426",
+          "Palit": "370",
+          "Powercolor": "825"
         }
       }
     }
@@ -70,16 +125,21 @@
       "Socket": {
         "category_id": "12",
         "values": {
-          "LGA 4189": "739617",
           "LGA 4677": "859401",
           "Prise P": "378016",
           "LGA 1700": "784223",
-          "SP3": "414445",
+          "LGA 4189": "739617",
           "SP5": "1299302",
-          "AM5": "932361",
+          "SP3": "414445",
           "AM4": "332514",
+          "AM5": "932361",
           "LGA 3647": "374599",
-          "LGA 4710": "7878358"
+          "LGA 1200": "558386",
+          "LGA 4710": "7878358",
+          "LGA 1151": "278729",
+          "LGA 1851": "3801579",
+          "LGA 2011-v3": "185101",
+          "LGA 2066": "353496"
         }
       },
       "Famille de processeur": {
@@ -88,13 +148,34 @@
           "Xeon Gold": "671008",
           "Epyc": "414443",
           "Xeon Silver": "881473",
-          "Xeon Platinum": "1016758",
           "Xeon": "127",
+          "Xeon Platinum": "1016758",
           "Xeon W": "388499",
           "Xeon Scalable Processors": "370378",
-          "Xeon E": "881474",
           "Ryzen Threadripper Pro": "1016759",
-          "Xeon E5": "166977"
+          "Xeon E5": "166977",
+          "Core i5 12e génération": "784214",
+          "Xeon E": "881474",
+          "Xeon E5 v2": "647632",
+          "Core i9 14e génération": "1422523",
+          "Core i3 10th Gen": "490983",
+          "Core i7 12e génération": "784216"
+        }
+      },
+      "Marque": {
+        "category_id": "bra",
+        "values": {
+          "HPE": "15164",
+          "Intel": "9",
+          "AMD": "38",
+          "Lenovo": "5",
+          "Fujitsu": "191",
+          "HP": "8",
+          "Dell": "5288",
+          "Siemens": "438",
+          "Supermicro": "990",
+          "ASUS": "1",
+          "Geekom": "107781"
         }
       }
     }
@@ -114,7 +195,12 @@
           "2 x 8GB": "722593",
           "1 x 64GB": "722574",
           "2 x 24 Go": "1299299",
-          "4 x 16GB": "722575"
+          "4 x 16GB": "722575",
+          "2 x 48 Go": "1299298",
+          "4 x 8GB": "722584",
+          "1 x 48 Go": "1476684",
+          "1 x 24 Go": "1289353",
+          "2 x 4GB": "722589"
         }
       },
       "Type de mémoire vive": {
@@ -124,11 +210,31 @@
           "RAM DDR5": "804383",
           "RAM DDR3": "1160",
           "RAM DDR3L": "19178",
-          "DDR2-RAM": "1159",
-          "DDR-RAM": "1158",
-          "LPDDR5X-RAM": "1212374",
-          "DDR3L-RS-RAM": "523050",
-          "DDR3U-RAM": "19179"
+          "RAM DDR2": "1159",
+          "RAM DDR": "1158",
+          "RAM LPDDR5X": "1212374",
+          "RAM DDR3L-RS": "523050",
+          "RAM DDR3U": "19179"
+        }
+      },
+      "Marque": {
+        "category_id": "bra",
+        "values": {
+          "Kingston": "266",
+          "G.Skill": "196",
+          "Corsair": "123",
+          "HPE": "15164",
+          "Lenovo": "5",
+          "Crucial": "127",
+          "HP": "8",
+          "Dell": "5288",
+          "Patriot": "375",
+          "Origin Storage": "59598",
+          "Adata": "23",
+          "Transcend": "511",
+          "2-Power": "62588",
+          "Goodram": "66423",
+          "QNAP": "398"
         }
       }
     }
