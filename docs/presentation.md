@@ -69,6 +69,10 @@ SPDX-License-Identifier: GPL-3.0-only
 
 If you want to keep/commit your solution, *fork* the repo.
 
+Slides are available as GitHub Pages
+
+<https://idiap.github.io/aidays2026workshop/>
+
 ---
 
 # Installing uv
