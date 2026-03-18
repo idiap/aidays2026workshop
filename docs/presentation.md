@@ -534,6 +534,12 @@ uv run src/aidays2026workshop/11_search_product_mcp.py            # terminal 2
 
 ---
 
+# Exercise 11 - Schema
+
+![ex11 schema](./workshop_11_schema.svg)
+
+---
+
 # Exercise 11 - Demo
 
 <video controls width="70%">
