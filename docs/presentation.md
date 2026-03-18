@@ -169,7 +169,7 @@ An **agent** is a program that uses an LLM as its reasoning engine to **decide**
 File: `src/aidays2026workshop/01_first_agent.py`
 
 ```bash
-uv run python -m aidays2026workshop.01_first_agent
+uv run src/aidays2026workshop/01_first_agent.py
 ```
 
 ---
@@ -222,7 +222,7 @@ print(result.output)  # CityInfo(name='Martigny', country='Switzerland', populat
 File: `src/aidays2026workshop/02_connect_4_structured_output.py`
 
 ```bash
-uv run python -m aidays2026workshop.02_connect_4_structured_output
+uv run src/aidays2026workshop/02_connect_4_structured_output.py
 ```
 
 ---
@@ -248,7 +248,7 @@ uv run python -m aidays2026workshop.02_connect_4_structured_output
 File: `src/aidays2026workshop/03_naive_data_analysis.py`
 
 ```bash
-uv run python -m aidays2026workshop.03_naive_data_analysis
+uv run src/aidays2026workshop/03_naive_data_analysis.py
 ```
 
 ---
@@ -298,7 +298,7 @@ Pydantic is also exploring code agents with **[Monty](https://github.com/pydanti
 File: `src/aidays2026workshop/04_data_analysis_codeagent.py`
 
 ```bash
-uv run python -m aidays2026workshop.04_data_analysis_codeagent
+uv run src/aidays2026workshop/04_data_analysis_codeagent.py
 ```
 
 ---
@@ -330,7 +330,7 @@ File: `src/aidays2026workshop/05_data_analysis_codeagent_plots.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m aidays2026workshop.05_data_analysis_codeagent_plots
+uv run src/aidays2026workshop/05_data_analysis_codeagent_plots.py
 ```
 
 ---
@@ -362,7 +362,7 @@ File: `src/aidays2026workshop/06_data_analysis_codeagent_plots_with_tools.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m aidays2026workshop.06_data_analysis_codeagent_plots_with_tools
+uv run src/aidays2026workshop/06_data_analysis_codeagent_plots_with_tools.py
 ```
 
 ---
@@ -388,7 +388,7 @@ uv run python -m aidays2026workshop.06_data_analysis_codeagent_plots_with_tools
 File: `src/aidays2026workshop/07_data_analysis_without_codeagent.py`
 
 ```bash
-uv run python -m aidays2026workshop.07_data_analysis_without_codeagent
+uv run src/aidays2026workshop/07_data_analysis_without_codeagent.py
 ```
 
 ---
@@ -437,7 +437,7 @@ File: `src/aidays2026workshop/08_data_analysis_mcp.py`
 
 ```bash
 uv run grimoireplot serve  # in a separate terminal
-uv run python -m aidays2026workshop.08_data_analysis_mcp
+uv run src/aidays2026workshop/08_data_analysis_mcp.py
 ```
 
 ---
