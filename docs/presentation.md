@@ -303,6 +303,12 @@ uv run python -m aidays2026workshop.04_data_analysis_codeagent
 
 ---
 
+# Exercise 04 - Schema
+
+![ex4 schema](./workshop_04_schema.svg)
+
+---
+
 # Exercise 04 - Demo
 
 <video controls width="70%">

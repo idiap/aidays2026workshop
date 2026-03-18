@@ -23,7 +23,17 @@ SPDX-FileContributor = [
 SPDX-License-Identifier = "GPL-3.0-only"
 
 [[annotations]]
-path = "docs/qr_image.png"
+path = "docs/**.png"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Idiap Research Institute <contact@idiap.ch>"
+SPDX-FileContributor = [
+  "William Droz <william.droz@idiap.ch>",
+]
+SPDX-License-Identifier = "CC0-1.0"
+
+
+[[annotations]]
+path = "docs/**.svg"
 precedence = "override"
 SPDX-FileCopyrightText = "2026 Idiap Research Institute <contact@idiap.ch>"
 SPDX-FileContributor = [
