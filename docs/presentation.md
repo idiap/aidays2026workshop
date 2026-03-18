@@ -174,6 +174,15 @@ uv run python -m aidays2026workshop.01_first_agent
 
 ---
 
+# Exercise 01 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_01.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # Structured Output with Pydantic
 
 Instead of parsing free-form text, you can **constrain** the LLM to return data matching a **Pydantic model**.
@@ -218,6 +227,15 @@ uv run python -m aidays2026workshop.02_connect_4_structured_output
 
 ---
 
+# Exercise 02 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_02.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # Exercise 03 - Naive data analysis
 
 **Give raw CSV data directly to the LLM**
@@ -232,6 +250,15 @@ File: `src/aidays2026workshop/03_naive_data_analysis.py`
 ```bash
 uv run python -m aidays2026workshop.03_naive_data_analysis
 ```
+
+---
+
+# Exercise 03 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_03.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
 
 ---
 
@@ -276,6 +303,15 @@ uv run python -m aidays2026workshop.04_data_analysis_codeagent
 
 ---
 
+# Exercise 04 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_04.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # Exercise 05 - CodeAgent with plots
 
 **Generate plots using plotly and grimoireplot**
@@ -290,6 +326,15 @@ File: `src/aidays2026workshop/05_data_analysis_codeagent_plots.py`
 uv run grimoireplot serve  # in a separate terminal
 uv run python -m aidays2026workshop.05_data_analysis_codeagent_plots
 ```
+
+---
+
+# Exercise 05 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_05.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
 
 ---
 
@@ -310,6 +355,15 @@ uv run python -m aidays2026workshop.06_data_analysis_codeagent_plots_with_tools
 
 ---
 
+# Exercise 06 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_06.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # Exercise 07 - Data analysis without CodeAgent
 
 **Structured queries instead of arbitrary code execution**
@@ -324,6 +378,15 @@ File: `src/aidays2026workshop/07_data_analysis_without_codeagent.py`
 ```bash
 uv run python -m aidays2026workshop.07_data_analysis_without_codeagent
 ```
+
+---
+
+# Exercise 07 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_07.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
 
 ---
 
@@ -367,6 +430,24 @@ uv run python -m aidays2026workshop.08_data_analysis_mcp
 
 ---
 
+# Exercise 08 - Demo (1/2)
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_08_01.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
+# Exercise 08 - Demo (2/2)
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_08_02.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # SubAgents
 
 **Subagents** are child agents spawned by an orchestrator to handle specific subtasks.
@@ -405,7 +486,7 @@ Sometimes some website are quite hostile to be used by agents/bots.
 Fortunately, it's still possible to extract usable MCPs by using browser-based automation.
 
 <video controls width="70%">
-  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_scraping_compressed.mp4" type="video/mp4" />
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_scraping.mp4" type="video/mp4" />
     Sorry, your browser doesn't support embedded videos.
 </video>
 
@@ -427,6 +508,15 @@ File: `src/aidays2026workshop/11_search_product_mcp.py`
 uv run src/aidays2026workshop/11_search_product_mcp.py --server   # terminal 1
 uv run src/aidays2026workshop/11_search_product_mcp.py            # terminal 2
 ```
+
+---
+
+# Exercise 11 - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_11.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
 
 ---
 
@@ -474,6 +564,33 @@ uv run src/aidays2026workshop/12_search_product_browser_use.py            # term
 
 ---
 
+# Exercise 12 - Demo (1/3)
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_12_01.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
+# Exercise 12 - Demo (2/3)
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_12_02.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
+# Exercise 12 - Demo (3/3)
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_12_03.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+---
+
 # Bonus - MCP Apps with prefab_ui
 
 **Render charts directly inside VS Code Copilot using MCP Apps**
@@ -498,6 +615,15 @@ def create_chart(request: ChartRequest) -> PrefabApp:
 ```
 
 File: `src/aidays2026workshop/21_bonus_mcps_app_data_analysis.py`
+
+---
+
+# Bonus - Demo
+
+<video controls width="70%">
+  <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_21.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+</video>
 
 ---
 
