@@ -492,6 +492,17 @@ Fortunately, it's still possible to extract usable MCPs by using browser-based a
 
 ---
 
+# Setup - Workshop 1x
+
+### Install dependencies
+
+```bash
+uv sync --extra scraping
+uv run playwright install
+```
+
+---
+
 # Exercise 11 - Search products with MCP
 
 **Build an MCP server that lets an agent search & filter Digitec products**
@@ -588,6 +599,16 @@ uv run src/aidays2026workshop/12_search_product_browser_use.py            # term
   <source src="https://www.idiap.ch/~wdroz/workshop_videos/compressed/workshop_demo_12_03.mp4" type="video/mp4" />
     Sorry, your browser doesn't support embedded videos.
 </video>
+
+---
+
+# Setup - Bonus
+
+### Install dependencies
+
+```bash
+uv sync --extra bonus
+```
 
 ---
 
