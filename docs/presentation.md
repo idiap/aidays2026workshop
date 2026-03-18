@@ -46,7 +46,7 @@ SPDX-License-Identifier: GPL-3.0-only
 
 # Planning
 
-  - Setup a modern python environment
+  - Setup a modern Python environment
     - Setup using uv
     - Standalone scripts vs full python project
     - Your first agent using pydantic-ai
@@ -56,9 +56,9 @@ SPDX-License-Identifier: GPL-3.0-only
     - Coding agent to the rescue!
     - Safer approach with tools
   - Workshop Tools (MCPs)
-    - From framework-specifc tools to MCPs
+    - From framework-specific tools to MCPs
     - Converting data analysis tools to MCPs
-    - MCPs to help us searching relevant PC components
+    - MCPs to help us search for relevant PC components
     - Comparing with browser-use and ChatGPT
 
 ---
@@ -77,7 +77,7 @@ Slides are available as GitHub Pages
 
 # Installing uv
 
-## Macos and Linux
+## macOS and Linux
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -133,7 +133,7 @@ dependencies = [
 uv sync
 ```
 
-*Optionnaly, add `.venv/bin/python` as the python interpreter in your IDE*
+*Optionally, add `.venv/bin/python` as the Python interpreter in your IDE*
 
 ---
 
