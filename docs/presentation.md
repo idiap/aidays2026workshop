@@ -335,6 +335,12 @@ uv run python -m aidays2026workshop.05_data_analysis_codeagent_plots
 
 ---
 
+# Exercise 05 - Schema
+
+![ex5 schema](./workshop_05_schema.svg)
+
+---
+
 # Exercise 05 - Demo
 
 <video controls width="70%">
