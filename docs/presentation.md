@@ -627,33 +627,6 @@ File: `src/aidays2026workshop/21_bonus_mcps_app_data_analysis.py`
 
 ---
 
-# Bonus - Integrating in VS Code
-
-Add the following to your VS Code MCP config (`.vscode/mcp.json`):
-
-```json
-{
-    "servers": {
-        "plot_mcp_app": {
-            "type": "stdio",
-            "command": "uv",
-            "args": [
-                "run",
-                "plot_mcp_app",
-                "--serve"
-            ]
-        }
-    },
-    "inputs": []
-}
-```
-
-Then ask Copilot: *"List the CSV files, analyze voting.csv and create a bar chart of participation by kind"*
-
-VS Code discovers `list_csv_files`, `get_csv_info`, `query_csv`, and `create_chart` tools automatically - and renders the chart **inline** in the chat.
-
----
-
 # End of the workshop
 
 William Droz <william.droz@idiap.ch>
