@@ -163,7 +163,7 @@ An **agent** is a program that uses an LLM as its reasoning engine to **decide**
 Copy one of the `env.*.example` files to `.env` and fill in your API key:
 
 ```bash
-cp env.openai.example .env   # or env.grok.example, env.infomaniak.example, env.vllm.example
+cp env.openai.example .env   # or env.grok.example, env.ppqai.example, etc.
 ```
 
 ### Available providers
@@ -173,6 +173,7 @@ cp env.openai.example .env   # or env.grok.example, env.infomaniak.example, env.
 | OpenAI | gpt-5.4 | `env.openai.example` |
 | Grok (xAI) | grok-4-1-fast-non-reasoning | `env.grok.example` |
 | Infomaniak | moonshotai/Kimi-K2.5 | `env.infomaniak.example` |
+| ppq.ai | gpt-5.4 | `env.ppqai.example` |
 | vLLM (local) | Qwen/Qwen3.5-9B | `env.vllm.example` |
 
 ### No API key?

@@ -34,10 +34,11 @@ Copy one of the example env files to `.env` and fill in your API key:
 |---|---|---|
 | OpenAI | `env.openai.example` | No `LLM_BASE_URL` needed |
 | Grok (xAI) | `env.grok.example` | Uses `https://api.x.ai/v1/` |
+| ppq.ai | `env.ppqai.example` | Uses `https://api.ppq.ai` - see [ppq.ai](https://ppq.ai) |
 | vLLM (local) | `env.vllm.example` | Run your own model locally |
 
 ```bash
-cp env.openai.example .env   # or env.grok.example / env.vllm.example
+cp env.openai.example .env   # or env.grok.example / env.ppqai.example / env.vllm.example
 # Then edit .env and set your LLM_API_KEY
 ```
 
