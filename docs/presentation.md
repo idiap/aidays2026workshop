@@ -158,6 +158,29 @@ An **agent** is a program that uses an LLM as its reasoning engine to **decide**
 
 ---
 
+# LLM Configuration
+
+Copy one of the `env.*.example` files to `.env` and fill in your API key:
+
+```bash
+cp env.openai.example .env   # or env.grok.example, env.infomaniak.example, env.vllm.example
+```
+
+### Available providers
+
+| Provider | Model | File |
+|---|---|---|
+| OpenAI | gpt-5.4 | `env.openai.example` |
+| Grok (xAI) | grok-4-1-fast-non-reasoning | `env.grok.example` |
+| Infomaniak | moonshotai/Kimi-K2.5 | `env.infomaniak.example` |
+| vLLM (local) | Qwen/Qwen3.5-9B | `env.vllm.example` |
+
+### No API key?
+
+Don't worry, I will **live-share a key** during the workshop for those who don't have one.
+
+---
+
 # Exercise 01 - Your first agent
 
 **How to make your first agent with pydantic-ai**
