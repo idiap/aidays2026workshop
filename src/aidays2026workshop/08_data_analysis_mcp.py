@@ -343,7 +343,7 @@ def create_and_push_plot(request: PlotRequest) -> dict:
     if request.color:
         kwargs["color"] = request.color
     if request.labels:
-        kwargs["labels"] = request.labels
+        kwargs["labels"] = request.labels  # type: ignore[assignment]
 
     chart_fn = {
         "bar": px.bar,

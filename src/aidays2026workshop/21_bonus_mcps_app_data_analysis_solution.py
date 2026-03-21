@@ -269,7 +269,7 @@ def create_chart(request: ChartRequest) -> PrefabApp:
 
     data = plot_df.to_dict(orient="records")
     chart_series = [
-        ChartSeries(data_key=s.data_key, label=s.label) for s in request.series
+        ChartSeries(dataKey=s.data_key, label=s.label) for s in request.series
     ]
 
     chart_cls = {"area": AreaChart, "bar": BarChart}[request.chart_type]

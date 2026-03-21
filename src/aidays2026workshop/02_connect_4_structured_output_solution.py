@@ -47,7 +47,7 @@ def build_agent(high_reasoning: bool = False) -> Agent[None, ConnectFourMove]:
             "Pick the best column to play. Only choose a column that is not full (top row is '.')."
         ),
     )
-    return agent
+    return agent  # type: ignore[return-value]
 
 
 parser = argparse.ArgumentParser(description="Connect Four with LLM agent")

@@ -334,7 +334,7 @@ def create_and_push_plot(request: PlotRequest) -> dict:
                 f"in the data. Available columns are: {available_cols}."
             }
 
-    kwargs = {"data_frame": plot_df, "title": request.title}
+    kwargs: dict[str, object] = {"data_frame": plot_df, "title": request.title}
     if request.x:
         kwargs["x"] = request.x
     if request.y:

@@ -212,7 +212,7 @@ def build_agent() -> Agent:
                 }
 
         # Build kwargs for plotly express
-        kwargs = {"data_frame": plot_df, "title": request.title}
+        kwargs: dict[str, object] = {"data_frame": plot_df, "title": request.title}
         if request.x:
             kwargs["x"] = request.x
         if request.y:

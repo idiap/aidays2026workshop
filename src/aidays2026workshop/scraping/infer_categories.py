@@ -244,7 +244,7 @@ async def main():
 
             for filter_name in filter_names:
                 await scrape_filter(
-                    browser, page_url, filter_name, product_data, top_n=args.top_n
+                    browser, str(page_url), filter_name, product_data, top_n=args.top_n
                 )
                 save_categories(categories)
 
