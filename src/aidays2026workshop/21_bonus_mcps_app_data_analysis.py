@@ -270,8 +270,7 @@ def create_chart(request: ChartRequest) -> PrefabApp:
     # TODO convert plot_df to the format expected by prefab_ui charts (list of dicts)
     data = ...
     chart_series = [
-        ChartSeries(data_key=s.data_key, label=s.label)
-        for s in request.series  # type: ignore[call-arg]
+        ChartSeries(dataKey=s.data_key, label=s.label) for s in request.series
     ]
 
     chart_cls = {"area": AreaChart, "bar": BarChart}[request.chart_type]
