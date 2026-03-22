@@ -43,3 +43,4 @@ build/
 .ruff_cache/
 .crush/
 CRUSH.md
+secret_link.txt
